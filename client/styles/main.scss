@@ -1,0 +1,29 @@
+@import 'n-normalize/main';
+@import 'o-colors/main';
+
+$font-sans: MetricWeb, sans-serif;
+$font-serif: Georgia, serif;
+$font-display: FinancierDisplayWeb, Georgia, serif;
+
+body {
+  @include oColorsFor(page, background);
+
+  margin: 0;
+  border: 0;
+  font-family: $font-sans;
+}
+
+
+.site-header {
+  padding: 18px 0 14px;
+  text-align: center;
+  border-bottom: 1px solid #e9decf;
+
+  > a {
+    opacity: 0.75;
+    &:hover { opacity: 1; }
+  }
+}
+    .masthead {
+      height: 18px;
+    }
