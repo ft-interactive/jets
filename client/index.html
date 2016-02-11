@@ -81,33 +81,42 @@
         <li>One railway company, <span class="didYouKnow company">CSX Corporation</span>, provides <a href="http://www.sec.gov/Archives/edgar/data/277948/000119312515106021/d804879ddef14a.htm">free flights</a> on the corporate plane to its chief executive.</li>
         <li>Why does <span class="didYouKnow company">Corning</span>, the glass-making company, provide corporate aircraft perquisites to its executives? Because of Corning, New York. The company's compensation committee <a href="http://www.sec.gov/Archives/edgar/data/24741/000130817914000058/lcorning2014_def14a.htm#lcorninga018">explains</a>: <q>The Committee believes that a well-managed program of limited personal aircraft use, given the limited commercial flight options available in the Corning, New York area, provides an extremely important benefit at a reasonable cost to the Company.</q></li>
         <li>What is the value of having an executive <i>not</i> take personal flights on the the corporate aircraft? In 2013 <span class="didYouKnow company">Leucadia National</span>, owner of Jeffries investment bank, paid Ian Cummings, its chairman, <a href="http://www.sec.gov/Archives/edgar/data/96223/000093041314001565/c77050_def14a.htm">$600,000</a> for him to relinquish his right to personal use of the company airplane between June 2013 and his retirement in June 2015.</li> 
-        <li>Own a private airplane and want to use it at work? You could get reimbursed for that, if you are senior enough. In 2014 <span class="didYouKnow company">Google</span> paid Eric Schmidt <a href="http://www.sec.gov/Archives/edgar/data/1288776/000130817915000157/lgoo2015_def14a.htm">$7,500 per hour</a> of business use of Mr Schmidt's planes, for a total payment of $1.3m. <span class="didYouKnow company">Oracle</span> <a href="http://www.sec.gov/Archives/edgar/data/1341439/000119312514350236/d778087ddef14a.htm">paid a company</a> owned by Larry Ellison, its executive chairman, $1.4m in 2014 using its aircrafts. Likewise, <span class="didYouKnow company">Cisco</span> <a href="http://www.sec.gov/Archives/edgar/data/858877/000119312514359030/d772671ddef14a.htm">reimbursed</a> chairman and chief executive John Chambers $2.5m. In each case, the company said it paid less than the market rate. Google, in particular, noted that the reimbursement was less than the cost incurred by Mr Schmidt.</li>  
+        <li>Own a private airplane and want to use it at work? You could get reimbursed for that, if you are senior enough. In 2014 <span class="didYouKnow company">Google</span> paid Eric Schmidt <a href="http://www.sec.gov/Archives/edgar/data/1288776/000130817915000157/lgoo2015_def14a.htm">$7,500 per hour</a> of business use of Mr Schmidt's planes, for a total payment of $1.3m. <span class="didYouKnow company">Oracle</span> <a href="http://www.sec.gov/Archives/edgar/data/1341439/000119312514350236/d778087ddef14a.htm">paid a company</a> owned by Larry Ellison, its executive chairman, $1.4m in 2014 using its aircrafts. Likewise, <span class="didYouKnow company">Cisco</span> <a href="http://www.sec.gov/Archives/edgar/data/858877/000119312514359030/d772671ddef14a.htm">reimbursed</a> chairman and chief executive John Chambers $2.5m. In each case, the company said it paid less than the market rate. Google, in particular, noted that the reimbursement was less than the cost incurred by Mr Schmidt.</li>
+        <li>Barry Diller is chairman of two digital media companies &mdash; <span class="didYouKnow company">Expedia</span> and <span class="didYouKnow company">IAC</span> &mdash; and has been receiving free personal flights on the corporate jets from both companies.</li>
 
       </ul>
 
-      <h2>Methodology</h2>
-      <p>To compile this database on executives’ personal use of company planes, the FT manually inspected the annual proxy filings (Securities and Exchanges Commission filing DEF 14A) of S&P 500 companies across two financial years (FY2013 and FY2014). </p>
+      <h2><a href="/data.html">About the data</a></h2>
+      <p>To compile this database on executives’ personal use of company planes, the FT manually inspected nearly a thousand company filings to the Securities and Exchanges Commission. We looked at annual proxy filings (also known as DEF 14A filings) of S&P 500 companies across two financial years (FY2013 and FY2014).</p>
 
       <p>Where a DEF 14A was not available (for example due to mergers and acquisitions activity), we looked for other proxy statements filed by the company that contained the information, such as PRE 14A statements.</p>
 
-      <p>To ease the process of finding all the filings, we used the SEC’s Transfer Protocol (FTP) server for its EDGAR electronic filing system to get and compile an index of the filings we were looking for. </p>
+      <p>To ease the process of finding all the filings, we used the SEC’s File Transfer Protocol (FTP) server for its EDGAR electronic filing system to get and compile an index of the filings we were looking for. </p>
 
       <p>For our analysis, we included only the 465 companies that were in the S&P 500 from January 1, 2014 to December 2015 (the period during which the proxy statements we examined were filed). Since SEC regulations do not require companies to disclose the value of personal use of corporate aircraft by a named executive if it is less than $25,000, we discarded any voluntary disclosure of aircraft perquisites that were below that threshold.</p>
 
       <p>This left us with 322 executives across 184 companies.</p>
 
       <p>We entered the data into a Google spreadsheet, and then used R, the statistical programming language, to conduct our analysis.</p>
-      <h2>The Table</h2>
+
+      <h3>Footnotes</h3>
+           <ul>
+        <li>There is no data available for Mylan in 2014 because the company did not file a proxy statement with that information that year.</li>
+        <li>The amounts quoted for Humana and Duke Energy overstate the value of aircraft perquisites given to their executives when compared to other companies in our database. Both Humana and Duke Energy included, in their reported figure, the value of disallowed corporate income tax deductions. Other companies either explicitly excluded that amount, or did not make clear whether that cost was included. Humana and Duke Energy said they included that amount, but did not break out the value of it, so we were not able to exclude that from our calculations.</li>
+        <li>The amount quoted for CBS executives overstate the value of aircraft perquisites, since the figure reported by CBS is for "transportation-related benefits" and includes the cost for a personal car and driver. Other companies report car and airplane perquities separately.  
+      </ul>
+
+      <h3>Download the data</h3>
+      <p>Click here to download the full data set as a .csv file. It includes information on the value of personal use of corporate aircraft perquisites for each individual in 2013 and 2014, as well as links to the individual Securities and Exchanges Commission filings that are the source of that information.</p>
+
+
+      <h3>Explore the full data set</h3>
       <div>
         <iframe frameborder="0" height="9300" scrolling="no" src="http://www.ft.com/ig/widgets/sortable-table/v2/table.html#filter=1&id=1mXHAcZQjj9Hy3oKwaXwXrKUAv-5xH7zxQ6Sdjw-lnXo" width="100%"><!--.--></iframe>
       </div>
       
-      <h2>Download the data</h2>
-      <h2>Footnotes</h2>
-      <ul>
-        <li>There is no data available for Mylan in 2014 because the company did not file a proxy statement with that information that year.</li>
-        <li>The amounts quoted for Humana and Duke Energy likely overstate the value of aircraft perquisites given to their executives when compared to other companies in our database. This is because both Humana and Duke Energy included the value of corporate income tax deductions disallowed as a result of the corporate airplane having been used for personal purposes. Other companies either explicitly excluded that amount, or did not make clear in their filing whether that cost was included. Humana and Duke Energy did not break out the value of the disallowed tax deduction so we were not able to exclude that from our calculations.</li>
-      </ul>
+    
+ 
     </main>
 
     <footer class="footer" role="contentinfo">
