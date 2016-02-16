@@ -216,7 +216,7 @@ gulp.task('eslint', () => gulp.src('client/scripts/**/*.js')
 gulp.task('watch', done => {
   runSequence('clean', ['scripts', 'styles'], () => {
     gulp.watch('./client/**/*.scss', ['styles'/*, 'scsslint'*/]);
-    gulp.watch('./client/**/*.{js,hbs}', ['scripts', 'eslint']);
+    gulp.watch('./client/**/*.{js,hbs}', ['scripts'/*, 'eslint'*/]);
     done();
   });
 });

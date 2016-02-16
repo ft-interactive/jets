@@ -27,3 +27,87 @@ body {
     .masthead {
       height: 18px;
     }
+
+  h1 {
+    font-family: $font-display;
+    font-weight: normal;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 1.2rem 0 0.6rem;
+  }
+  h2 {
+    font-family: $font-display;
+    font-weight: normal;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 1.2rem 0 0.6rem;
+  }
+
+  h6 {
+  max-width: 600px;
+  margin: 0 auto;
+  color: oColorsGetPaletteColor('pink-tint5');
+  font-weight: 200;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 0.875em;
+  > .bullet {
+    margin: 0 10px;
+    }
+  }
+
+p {
+  font-family: $font-serif;
+  max-width: 660px;
+  margin: 1em auto;
+  padding: 0 10px;
+}
+
+text {
+  font-family: $font-sans;
+}
+
+.viz {
+  margin: 0 auto;
+}
+
+rect {
+  stroke-width: 1px;
+  stroke: #ccc;
+}
+
+.label { 
+  text-anchor: end; 
+}
+.title { 
+  font-size: 21px;
+}
+
+.subtitle { 
+  font-size: 14px; 
+}
+
+.source { 
+  font-size: 12px; 
+}
+
+.circles { 
+  fill-opacity: 0.4;
+  stroke-width: 1px;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #777;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: $font-sans;
+  font-size: 11px;
+}
+
+#y-axis text {
+  text-anchor:end;
+}
