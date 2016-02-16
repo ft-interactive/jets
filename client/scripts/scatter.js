@@ -1,15 +1,3 @@
-import oHoverable from 'o-hoverable';
-import attachFastClick from 'fastclick';
-
-document.addEventListener('DOMContentLoaded', () => {
-  // make hover effects work on touch devices
-  oHoverable.init();
-
-  // remove the 300ms tap delay on mobile browsers
-  attachFastClick(document.body);
-
-  // YOUR CODE HERE!
-
 
 
 var styles = {
@@ -55,11 +43,11 @@ var styles = {
 
 //Configuration
 var dataLocation = 'jetscatter.csv';
-var title='Spending on jet perks by S&P500 comapanies';
-var subtitle='$&#39;000, in 2014';
+var title='International Piracy and Armed Robbery at Sea';
+var subtitle='incidents by region, 1984-2010';
 var source='Source: Securities and Exchanges Commission';
 var colours=['#4479b8','#ea9942','#454545','#87b700','#a765a6','#8f7666','#aa0016'];
-var circleSize= 2;
+var circleSize= 3;
 
 //general layout information
 var margin = {
@@ -104,7 +92,7 @@ function drawChart(error, data) {
 
     var y =y.sort(sortFunction);
     var yRange = [0,y[y.length-1]];
-
+    console.log(yRange)
     //set up the scale we will use for plotting our scatter plot
     var xScale = d3.scale.linear()
         .domain(xRange)
@@ -126,7 +114,7 @@ function drawChart(error, data) {
     .orient('left');
     
     //set up document structure
-    var svg = d3.select('div#scatter')
+    var svg = d3.select('div#viz')
         .append('svg')
             .attr({
                 'width': width,

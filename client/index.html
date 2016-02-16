@@ -24,7 +24,6 @@
     <script src="scripts/top.js"></script>
     <!-- endbuild -->
     <!-- endsmoosh -->
-
     <link rel="stylesheet" href="https://h2.ft.com/build/v2/bundles/css?modules=o-footer@^4,o-fonts@^2,o-grid@^4">
 
     <!-- smoosh -->
@@ -52,9 +51,18 @@
     <script>
     var FT = FT || {}; FT.Properties = FT.Properties || {}; FT.Properties.ENV = 'p'; // For Prod OR
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
     <!-- FT tracking module 1.2.5 -->
     <script src="https://h2.ft.com/static-render-p.ft.com/scripts/a03ca392/bundles/tracking.js" async></script>
+
+    <!-- O-grid build service -->
+    <link rel="stylesheet"
+    href="//build.origami.ft.com/v2/bundles/css?modules=o-grid@^4.0.0,o-fonts@^1.4.0" />
+    <script src="//build.origami.ft.com/v2/bundles/js?modules=o-grid@^4.0.0,o-fonts@^1.4.0" async />
+
+
+
   </head>
   <body>
 
@@ -71,8 +79,15 @@
 
     <main role="main">
       <h1>Story here</h1>
-      <h2>
+    <div class="o-grid-container">
+      <div class="o-grid-row">
+        <!-- two divs, spanning a total of 12 columns -->
+        <div data-o-grid-colspan="8" id="scatter"></div>
+      </div>
+    </div>
+      
       <h2>Did you know...</h2>
+      <p><a href="/factoids.html">To factoids page</a></p>
       <ul>
         <li>The tax implications of letting executives use the corporate airplane for personal travel could sometimes be more costly than the flights themselves. <span class="didYouKnow company">Boston Scientific</span> spent $39,982 providing personal flights to its chief executive Michael Mahoney in 2013, but the medical device maker also said that it <a href="http://www.sec.gov/Archives/edgar/data/885725/000104746914002942/a2219226zdef14a.htm">lost $152,884</a> in corporate income tax deductions as a result.</li>
         <li><span class="didYouKnow company">Ralph Lauren</span> was reimbursed $200,000 in both<a href="http://www.sec.gov/Archives/edgar/data/1037038/000119312513282801/d560706ddef14a.htm#toc560706_39"> 2013</a> and <a href="http://www.sec.gov/Archives/edgar/data/1037038/000119312514251224/d742991ddef14a.htm">2014</a> by his eponymous company &hellip; for flying on his own private airplane for personal travel.</li>
