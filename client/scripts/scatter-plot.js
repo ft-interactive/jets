@@ -26,8 +26,10 @@ export default function(){
 	let anno3 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for its chairman and chief executive, James Gorman'
 	let anno4 = 'Kansas City Southern\'s dot is just above the $25,000 SEC minimum for disclosure. Companies do not have to disclose the value of perquisites worth less than that'
 	let anno5 = 'We found 173 companies with discloseable jet perks. If you include all the companies, this chart would look like this instead'
-	let anno6 = 'The chart\'s curvature indicates that a handful of companies spent a lot more giving free flights to their executives than the others'
+	let anno6 = 'The chart\'s curvature indicates that a handful of companies were a lot more generous with free flights than the others'
 	let anno7 = 'This becomes a lot apparent if we show the cumulative value'
+	let anno8 = 'The top 10 companies accounted for a quarter of all spending in 2014'
+	let anno9 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds'
 
 	function chart(parent){
 
@@ -128,6 +130,21 @@ export default function(){
 
 		// Draw annotations
 
+		svg.append('text')
+			.attr({
+				'class':'annotation',
+				'y':function(){
+					return 100;
+				},
+				'dy':0,
+				'x':function(){
+					return width-400;
+				},
+			})
+			.text(anno1);
+
+		wrap(d3.select('.annotation'),300)
+
 
 	}
 
@@ -174,11 +191,37 @@ export default function(){
 	return chart;
 }
 
-//sort function
+//utility functions
 function sortFunction(a,b)    {
     return a-b;   
 }
 
 function daydiff(a,b)   {
     return Math.round((b-a)/(1000 * 60 * 60 * 24));   
+}
+
+function wrap(text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        x = text.attr("x"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      console.log(width);
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+      }
+    }
+  });
 }
