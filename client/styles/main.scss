@@ -170,22 +170,25 @@ rect {
   stroke-width: 1px;
 }
 
-.secLine {
-  'stroke-width':2;
-  'stroke':'black';
+.circles.highlight {
+  fill: black;
 }
 
-.axis path, .axis line {
+.secLine {
+  opacity:0;
+}
+
+.axes path, .axes line {
   fill: none;
   stroke: #777;
   shape-rendering: crispEdges;
 }
 
-.axis text {
+.axes text {
   font-family: $font-sans;
   font-size: 11px;
 }
 
-#y-axis text {
+#yAxis text {
   text-anchor:end;
 }

@@ -47,25 +47,29 @@ export default function(){
 		let animations = [
 			function(){
 				changeAnno(anno1);
-				d3.select('#Freeport-McMoRan').attr('class','circles.highlight');
+				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
 				d3.select('.backbutton.hidden').attr('class','backbutton');
 			},
 			function(){
 				changeAnno(anno2);
-				d3.select('#Freeport-McMoRan').attr('class','circles')
-				d3.select('#Morgan_Stanley').attr('class','circles.highlight');
+				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
+				d3.select('#Morgan_Stanley').attr('class','circles.highlight').attr('r', '5');
 			},
 			function(){
 				changeAnno(anno3);
-				d3.select('#Morgan').attr('class','circles');
-				d3.select('#Kansas_City_Southern').attr('class','circles.highlight');
-				d3.select('.secLine').attr('opacity','1');
-				// setTimeout(function(){
-					
-				// },500
-				// )
+				d3.select('#Morgan_Stanley').attr('class','circles').attr('r','2');
+				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
+				setTimeout(function(){
+					d3.select('line.secLine').style('opacity','1');
+				},500
+				)
 			},
-			function(){changeAnno(anno4)},
+			function(){
+				changeAnno(anno4);
+				d3.select('#Kansas_City_Southern').attr('class','circles').attr('r','2');
+				rescaleX(465);
+
+			},
 			function(){changeAnno(anno5)},
 			function(){changeAnno(anno6)},
 			function(){changeAnno(anno7)},
@@ -111,7 +115,15 @@ export default function(){
 			},500)
 		}
 
-
+		function rescaleX(newDomainMax) {
+            xScale.domain([0,newDomainMax])
+            svg.select(".xAxis")
+	            .transition().duration(1500).ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+	            .call(xAxis);
+			d3.selectAll('.circles')
+				.transition().duration(1500).ease("sin-in-out")
+				.attr('cx', function(d) { return xScale(d[0])})
+		}
 
 	    //set up the scale we will use for plotting our scatter plot
 	    var xScale = d3.scale.linear()
@@ -194,8 +206,8 @@ export default function(){
 
 	    axes.append('g')
 	        .attr({
-	            'id': 'x-axis',
-	            'class': 'x axis',
+	            'id': 'xAxis',
+	            'class': 'xAxis',
 	            'transform': 'translate('+margin.left+','+plotHeight+')'
 	        })
 	        .call(xAxis);
@@ -203,8 +215,8 @@ export default function(){
 
 	    axes.append('g')
 	        .attr({
-	        	'class': 'y axis',
-	            'id': 'y-axis',
+	            'id': 'yAxis',
+	            'class': 'yAxis',
 	            'transform': 'translate('+margin.left+',0)'
 	        })
 	        .call(yAxis)    
