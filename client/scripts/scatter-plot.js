@@ -12,7 +12,7 @@ export default function(){
 
 //general layout information
 	let margin = {
-	    top:80,
+	    top:120,
 	    left:50,
 	    bottom:50,
 	    right:30
@@ -30,6 +30,13 @@ export default function(){
 	let anno7 = 'This becomes a lot apparent if we show the cumulative value'
 	let anno8 = 'The top 10 companies accounted for a quarter of all spending in 2014'
 	let anno9 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds'
+
+	let annotations = [anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8, anno9];
+
+
+
+//needed for animation
+	let storyState = 0;
 
 	function chart(parent){
 
@@ -56,32 +63,56 @@ export default function(){
 		    .tickFormat(d3.format('s'));
 	    
 	    //set up document structure
+
+	    parent.append('span')
+	        .attr('y',20)
+	        .attr('class','chart-title')
+	        .html(title);
+	    
+	    parent.append('span')
+	        .attr('y',40)
+	        .attr('class','chart-subtitle')
+	        .html(subtitle);
+
+		var buttonHolder = parent.append("span")
+			.attr("class","buttonHolder")
+			.attr('y',60);
+
+		var backBtn = d3.select(".buttonHolder").append("span")
+			.attr("class","backbutton hidden")
+			.html("&laquo; Back");
+
+		var counter1 = buttonHolder.append('span')
+			.attr({"class":"slideCounter one"})
+			.html((storyState+1) + "/" + (annotations.length+1));
+
+		var forBtn = d3.select(".buttonHolder").append("span")
+			.attr("class","animatebutton")
+			.html("Next &raquo;");
+
+	    // forBtn.on("click",swipeForward);
+   		// backBtn.on("click",swipeBack);
+	    
 	    var svg = parent
 	        .append('svg')
 	            .attr({
 	                'width': width,
 	                'height': height
 	            });
-	    
-	    //title
-	    svg.append('text')
-	        .attr('y',20)
-	        .attr('class','title')
-	        .text(title);
-	    
-	     svg.append('text')
-	        .attr('y',40)
-	        .attr('class','subtitle')
-	        .text(subtitle);
-	    
-	    svg.append('text')
+
+
+	    parent.append('span')
 	        .attr({
 	            'y':function(){
 	                return height-5;
 	            },
-	            'class':'source'
+	            'class':'chart-source'
 	        })
-	        .text(source);
+	        .html(source);
+
+	    //progress buttons
+
+
 
 	    //axes
 
@@ -128,23 +159,22 @@ export default function(){
 	                'fill': '#F00'
 	            });
 
-		// Draw annotations
+	// Draw annotations
 
 		svg.append('text')
 			.attr({
 				'class':'annotation',
 				'y':function(){
-					return 100;
+					return 150;
 				},
 				'dy':0,
 				'x':function(){
-					return width-400;
+					return width*3/5;
 				},
 			})
 			.text(anno1);
 
-		wrap(d3.select('.annotation'),300)
-
+		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
 
 	}
 

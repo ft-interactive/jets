@@ -80,16 +80,89 @@ rect {
 .label { 
   text-anchor: end; 
 }
-.title { 
+.chart-title { 
   font-size: 21px;
+  display:block;
 }
 
-.subtitle { 
-  font-size: 14px; 
+.chart-subtitle { 
+  font-size: 14px;
+  display:block;
 }
 
-.source { 
-  font-size: 12px; 
+.chart-source { 
+  font-size: 12px;
+  display:block;
+
+}
+
+.buttonHolder {
+  display:block;
+  margin-top:20px;
+}
+
+.animatebutton{
+  position:relative;
+  background-color:#2e6e9e;
+  padding:5px;
+  border-radius:5px;
+  color:white;
+  border:1px solid #275e86;
+  transition:0.3s;
+  cursor:pointer;
+  pointer-events:all;
+  float:left;
+  line-height:20px;
+  margin-right:5px;
+}
+
+.animatebutton:hover{
+  background-color:#275e86;
+}
+
+.animatebutton.hidden{
+  opacity:0.3;
+  pointer-events:none;
+}
+
+
+.slideCounter{min-width:32px;
+  text-align:center;
+  position:relative;
+  padding:5px 2px;
+  border-radius:0px;
+  color:#43423e;
+  border:0px solid #275e86;
+  transition:0.3s;
+  cursor:default;
+  pointer-events:all;
+  float:left;
+  line-height:20px;
+  margin:0px 3px;
+}
+
+.backbutton{
+  position:relative;
+  background-color:#2e6e9e;
+  padding:5px;
+  border-radius:5px;
+  color:white;
+  border:1px solid #275e86;
+  transition:0.3s;
+  cursor:pointer;
+  pointer-events:all;
+  float:left;
+  line-height:20px;
+  margin-left:5px;
+}
+
+.backbutton:hover{
+  background-color:#275e86;
+}
+
+.backbutton.hidden{
+  opacity:0.3;
+  pointer-events:none;
 }
 
 .circles { 

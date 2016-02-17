@@ -24,7 +24,7 @@ function dataLoaded(error, data) {
     	.height(600)
     	.width(rect.width)
     	.margin({
-		    top:80,
+		    top:30,
 		    left:50,
 		    bottom:50,
 		    right:30
