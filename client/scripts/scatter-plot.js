@@ -20,28 +20,98 @@ export default function(){
 	let width = 600;
 	let height = 600;
 
-// Annotation texts
-	let anno1 = 'We ranked each of the S&P 500 companies according to how much they gave their executives in free personal flights on the corporate airplane'
-	let anno2 = 'This dot represents Freeport McRoran, the mining company that spent the most in 2014 &mdash; $1.2m'
-	let anno3 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for its chairman and chief executive, James Gorman'
-	let anno4 = 'Kansas City Southern\'s dot is just above the $25,000 SEC minimum for disclosure. Companies do not have to disclose the value of perquisites worth less than that'
-	let anno5 = 'We found 173 companies with discloseable jet perks. If you include all the companies, this chart would look like this instead'
-	let anno6 = 'The chart\'s curvature indicates that a handful of companies were a lot more generous with free flights than the others'
-	let anno7 = 'This becomes a lot apparent if we show the cumulative value'
-	let anno8 = 'The top 10 companies accounted for a quarter of all spending in 2014'
-	let anno9 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds'
-
-	let annotations = [anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8, anno9];
-
-
-
-//needed for animation
-	let storyState = 0;
-
 	function chart(parent){
 
 		let plotWidth = width - (margin.left + margin.right);
 		let plotHeight = height - (margin.top + margin.bottom);
+
+// Annotation texts
+		let anno0 = 'We ranked each of the S&P 500 companies according to how much they gave their executives in free personal flights on the corporate airplane'
+		let anno1 = 'This dot represents Freeport McRoran, the mining company that spent $1.2m, the most in 2014'
+		let anno2 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for its chairman and chief executive, James Gorman'
+		let anno3 = 'Kansas City Southern\'s dot is just above the $25,000 SEC minimum for disclosure. Companies do not have to disclose the value of perquisites worth less than that'
+		let anno4 = 'We found 173 companies with discloseable jet perks. If you include all the companies, this chart would look like this instead'
+		let anno5 = 'The chart\'s curvature indicates that a handful of companies were a lot more generous with free flights than the others'
+		let anno6 = 'This becomes a lot apparent if we show the cumulative value'
+		let anno7 = 'The top 10 companies accounted for a quarter of all spending in 2014'
+		let anno8 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds'
+
+		let annotations = [anno0, anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8];
+
+
+	//needed for animation
+		let storyState = 0;
+		let maxState = annotations.length;
+
+//Animations
+		let animations = [
+			function(){
+				changeAnno(anno1);
+				d3.select('#Freeport-McMoRan').attr('class','circles.highlight');
+				d3.select('.backbutton.hidden').attr('class','backbutton');
+			},
+			function(){
+				changeAnno(anno2);
+				d3.select('#Freeport-McMoRan').attr('class','circles')
+				d3.select('#Morgan_Stanley').attr('class','circles.highlight');
+			},
+			function(){
+				changeAnno(anno3);
+				d3.select('#Morgan').attr('class','circles');
+				d3.select('#Kansas_City_Southern').attr('class','circles.highlight');
+				d3.select('.secLine').attr('opacity','1');
+				// setTimeout(function(){
+					
+				// },500
+				// )
+			},
+			function(){changeAnno(anno4)},
+			function(){changeAnno(anno5)},
+			function(){changeAnno(anno6)},
+			function(){changeAnno(anno7)},
+			function(){changeAnno(anno8)}
+		]
+
+		let backAnimations = [
+
+		]
+
+
+	//functions used to step through the viz
+		function swipeForward() {
+			if (storyState < 0) {
+
+			} else if (storyState == maxState) {
+
+			} else {
+				animations[storyState]();
+				counter.html((storyState+2) + "/" + (annotations.length+1))
+				return storyState=storyState+1;
+			}
+		}
+
+		function swipeBack() {	
+			if (storyState > maxState) {
+
+			} else if (storyState == 0) {
+
+			} else {
+				backAnimations[storyState]();
+				counter.html((storyState) + "/" + (annotations.length+1))
+				storyState-=1;
+				return storyState;
+			}
+		}
+		function changeAnno (newAnno) {
+			d3.select(".annotation")
+				.style("opacity",0)
+			setTimeout(function(){
+				d3.select(".annotation").style("opacity",1).text(newAnno);
+				wrap(d3.select('.annotation'), Math.min(300, width*2/5));
+			},500)
+		}
+
+
 
 	    //set up the scale we will use for plotting our scatter plot
 	    var xScale = d3.scale.linear()
@@ -65,14 +135,14 @@ export default function(){
 	    //set up document structure
 
 	    parent.append('span')
-	        .attr('y',20)
-	        .attr('class','chart-title')
-	        .html(title);
+			.attr('y',20)
+			.attr('class','chart-title')
+			.html(title);
 	    
 	    parent.append('span')
-	        .attr('y',40)
-	        .attr('class','chart-subtitle')
-	        .html(subtitle);
+			.attr('y',40)
+			.attr('class','chart-subtitle')
+			.html(subtitle);
 
 		var buttonHolder = parent.append("span")
 			.attr("class","buttonHolder")
@@ -82,16 +152,20 @@ export default function(){
 			.attr("class","backbutton hidden")
 			.html("&laquo; Back");
 
-		var counter1 = buttonHolder.append('span')
-			.attr({"class":"slideCounter one"})
+		var counter = buttonHolder.append('span')
+			.attr({"class":"slideCounter"})
 			.html((storyState+1) + "/" + (annotations.length+1));
 
 		var forBtn = d3.select(".buttonHolder").append("span")
 			.attr("class","animatebutton")
 			.html("Next &raquo;");
 
-	    // forBtn.on("click",swipeForward);
-   		// backBtn.on("click",swipeBack);
+		forBtn.on("click", function(){
+			swipeForward();
+		});
+		backBtn.on("click",function(){
+			swipeBack();
+		});
 	    
 	    var svg = parent
 	        .append('svg')
@@ -99,7 +173,6 @@ export default function(){
 	                'width': width,
 	                'height': height
 	            });
-
 
 	    parent.append('span')
 	        .attr({
@@ -109,10 +182,6 @@ export default function(){
 	            'class':'chart-source'
 	        })
 	        .html(source);
-
-	    //progress buttons
-
-
 
 	    //axes
 
@@ -134,7 +203,7 @@ export default function(){
 
 	    axes.append('g')
 	        .attr({
-	            'class': 'y axis',
+	        	'class': 'y axis',
 	            'id': 'y-axis',
 	            'transform': 'translate('+margin.left+',0)'
 	        })
@@ -172,9 +241,21 @@ export default function(){
 					return width*3/5;
 				},
 			})
-			.text(anno1);
+			.text(annotations[0]);
 
 		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
+
+	// Draw line showing SEC disclosure threshold
+		d3.select('g#plot').append('line')
+			.attr({
+				'class':'secLine',
+				'x1':0,
+				'x2':plotWidth,
+				'y1':function(){ return yScale(25000)},
+				'y2':function(){ return yScale(25000)},
+				'stroke-width':2,
+				'stroke':'black'
+			})
 
 	}
 
@@ -245,7 +326,6 @@ function wrap(text, width) {
     while (word = words.pop()) {
       line.push(word);
       tspan.text(line.join(" "));
-      console.log(width);
       if (tspan.node().getComputedTextLength() > width) {
         line.pop();
         tspan.text(line.join(" "));

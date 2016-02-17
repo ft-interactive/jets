@@ -4,7 +4,7 @@ export default function (data) {
 	let coords = [];
 
 	data.forEach(function (d) {
-	  coords.push([d.x, d.y, d.name]);
+	  coords.push([d.x, d.y, d.name.replace(/ /g,"_")]);
 	});
 
 	// setup x and y arrays to find range

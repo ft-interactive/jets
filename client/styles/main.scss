@@ -170,6 +170,11 @@ rect {
   stroke-width: 1px;
 }
 
+.secLine {
+  'stroke-width':2;
+  'stroke':'black';
+}
+
 .axis path, .axis line {
   fill: none;
   stroke: #777;
