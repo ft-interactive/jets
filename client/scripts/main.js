@@ -2,8 +2,7 @@ import d3 from 'd3';
 import scatterPlot from './scatter-plot';
 import dataProcessor from './scatter-data-processor';
 
-const dataLocation = 'jetscatter.csv';
-
+const dataLocation = '../data/jetscatter.csv';
 
 function dataLoaded(error, data) {
 
@@ -12,7 +11,6 @@ function dataLoaded(error, data) {
 
     let div = document.getElementById('scatter');
     let rect = div.getBoundingClientRect();
-    console.log(rect)
 
 
     jetSpendingScatter

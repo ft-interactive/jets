@@ -60,17 +60,18 @@ export default function(){
 				d3.select('#Morgan_Stanley').attr('class','circles').attr('r','2');
 				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
 				setTimeout(function(){
-					d3.select('line.secLine').style('opacity','1');
-				},500
-				)
+					d3.select('rect.secLine').style('opacity','0.3');
+				},500)
 			},
 			function(){
 				changeAnno(anno4);
 				d3.select('#Kansas_City_Southern').attr('class','circles').attr('r','2');
 				rescaleX(465);
-
 			},
-			function(){changeAnno(anno5)},
+			function(){
+				changeAnno(anno5);
+				drawCurvLine();
+			},
 			function(){changeAnno(anno6)},
 			function(){changeAnno(anno7)},
 			function(){changeAnno(anno8)}
@@ -125,6 +126,17 @@ export default function(){
 				.attr('cx', function(d) { return xScale(d[0])})
 		}
 
+		//function for incrementally drawing the curvature line line
+
+		function pathTween() {
+			var interpolate = d3.scale.quantile()
+									.domain([0,1])
+            						.range(d3.range(1, data.curvLine.length + 1));
+    		return function(t) {
+        		return line(data.curvLine.slice(0, interpolate(t)));
+        	}
+        };
+
 	    //set up the scale we will use for plotting our scatter plot
 	    var xScale = d3.scale.linear()
 	        .domain(data.xDomain)
@@ -166,7 +178,7 @@ export default function(){
 
 		var counter = buttonHolder.append('span')
 			.attr({"class":"slideCounter"})
-			.html((storyState+1) + "/" + (annotations.length+1));
+			.html((storyState+1) + "/" + (annotations.length));
 
 		var forBtn = d3.select(".buttonHolder").append("span")
 			.attr("class","animatebutton")
@@ -258,17 +270,32 @@ export default function(){
 		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
 
 	// Draw line showing SEC disclosure threshold
-		d3.select('g#plot').append('line')
+		d3.select('g#plot').append('rect')
 			.attr({
 				'class':'secLine',
-				'x1':0,
-				'x2':plotWidth,
-				'y1':function(){ return yScale(25000)},
-				'y2':function(){ return yScale(25000)},
-				'stroke-width':2,
-				'stroke':'black'
+				'x':0,
+				'y':function(){ return yScale(25000)},
+				'width':plotWidth,
+				'height':function(){ return plotHeight-yScale(25000)},
 			})
+	// Darw line for curvature
+		let line = d3.svg.line()
+			.x(function(d) { return xScale(d.x)})
+		    .y(function(d) { return yScale(d.y)});
 
+		let drawCurvLine = function(){
+				d3.select('g#plot').append('path')
+				.attr({
+					'd': line(data.curvLine),
+					'class':'curvatureLine',
+					'stroke': 'blue',
+					'stroke-width': '2',
+					'fill':'none'
+				})
+				.transition()
+				.duration(2000)
+				.attrTween('d', pathTween)
+			}
 	}
 
 	chart.title = function(string){
