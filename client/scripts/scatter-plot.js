@@ -72,7 +72,10 @@ export default function(){
 				changeAnno(anno5);
 				drawCurvLine();
 			},
-			function(){changeAnno(anno6)},
+			function(){
+				changeAnno(anno6);
+				rescaleY();
+			},
 			function(){changeAnno(anno7)},
 			function(){changeAnno(anno8)}
 		]
@@ -118,12 +121,19 @@ export default function(){
 
 		function rescaleX(newDomainMax) {
             xScale.domain([0,newDomainMax])
-            svg.select(".xAxis")
-	            .transition().duration(1500).ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+            svg.select('.xAxis')
+	            .transition().duration(1500).ease('sin-in-out')
 	            .call(xAxis);
 			d3.selectAll('.circles')
-				.transition().duration(1500).ease("sin-in-out")
+				.transition().duration(1500).ease('sin-in-out')
 				.attr('cx', function(d) { return xScale(d[0])})
+		}
+
+		function rescaleY() {
+			yScale.domain(data.y1Domain)
+            svg.select('.yAxis')
+	            .transition().duration(1500).ease('sin')
+	            .call(yAxis);
 		}
 
 		//function for incrementally drawing the curvature line line
