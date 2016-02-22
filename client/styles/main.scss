@@ -178,6 +178,10 @@ rect {
   opacity:0;
 }
 
+.cumulativeRect {
+  opacity:0.1;
+}
+
 .axes path, .axes line {
   fill: none;
   stroke: #777;

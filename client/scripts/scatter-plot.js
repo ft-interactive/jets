@@ -32,9 +32,9 @@ export default function(){
 		let anno3 = 'Kansas City Southern\'s dot is just above the $25,000 SEC minimum for disclosure. Companies do not have to disclose the value of perquisites worth less than that'
 		let anno4 = 'We found 173 companies with discloseable jet perks. If you include all the companies, this chart would look like this instead'
 		let anno5 = 'The chart\'s curvature indicates that a handful of companies were a lot more generous with free flights than the others'
-		let anno6 = 'This becomes a lot apparent if we show the cumulative value'
-		let anno7 = 'The top 10 companies accounted for a quarter of all spending in 2014'
-		let anno8 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds'
+		let anno6 = 'This becomes a lot more apparent if we show the cumulative value instead. The top 10 companies accounted for a quarter of all spending in 2014'
+		let anno7 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds of all corporate '
+		let anno8 = ''
 
 		let annotations = [anno0, anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8];
 
@@ -75,14 +75,45 @@ export default function(){
 			function(){
 				changeAnno(anno6);
 				rescaleY();
+				d3.select('.curvatureLine').style('opacity','0');
+				d3.select('.secLine').style('opacity','0');
+				d3.selectAll('.circles').remove();
+				drawCumulativeDots(10);
+				plot.append('rect')
+					.attr({
+						'class':'cumulativeRect',
+						'x':0,
+						'y':function(){ return yScale(data.coords[9][3])},
+						'width':function(){ return xScale(data.coords[9][0])},
+						'height':function(){ return plotHeight-yScale(data.coords[9][3])},
+				})
+
 			},
-			function(){changeAnno(anno7)},
-			function(){changeAnno(anno8)}
+			function(){
+				changeAnno(anno7);
+				drawCumulativeDots(50);
+				d3.select('.cumulativeRect')
+					.attr({
+						'class':'cumulativeRect',
+						'x':0,
+						'y':function(){ return yScale(data.coords[49][3])},
+						'width':function(){ return xScale(data.coords[49][0])},
+						'height':function(){ return plotHeight-yScale(data.coords[49][3])},
+
+					})
+			},
+
+			function(){
+				changeAnno(anno8);
+				drawCumulativeDots(data.coords.length)
+			}
 		]
 
 		let backAnimations = [
 
 		]
+
+		console.log(data.coords[10])
 
 
 	//functions used to step through the viz
@@ -146,6 +177,24 @@ export default function(){
         		return line(data.curvLine.slice(0, interpolate(t)));
         	}
         };
+
+        //function to incrementally draw the cumulative dots
+
+        function drawCumulativeDots(end) {
+			plot.selectAll('circle')
+				.data(data.coords.slice(0,end))
+		        .enter()
+		        .append('circle')
+		            .attr({
+		                'class':'circles',
+		                'cx': function(d) { return xScale(d[0]) },
+		                'cy': function(d) { return yScale(d[3]) },
+		                'r': circleSize,
+		                'id': function(d) { return d[2] },
+		                'fill': '#F00'
+		            })
+
+        }
 
 	    //set up the scale we will use for plotting our scatter plot
 	    var xScale = d3.scale.linear()
@@ -279,7 +328,7 @@ export default function(){
 
 		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
 
-	// Draw line showing SEC disclosure threshold
+	// Draw shaded area showing SEC disclosure threshold
 		d3.select('g#plot').append('rect')
 			.attr({
 				'class':'secLine',
