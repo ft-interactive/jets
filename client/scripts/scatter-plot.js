@@ -49,6 +49,7 @@ export default function(){
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
 				d3.select('.backbutton.hidden').attr('class','backbutton');
+				d3.select('.resetbutton.hidden').attr('class','resetbutton');
 			},
 			function(){
 				changeAnno(anno2);
@@ -141,6 +142,33 @@ export default function(){
 				return storyState;
 			}
 		}
+
+		function reset() {
+			storyState = 0;
+			changeAnno(anno0);
+			counter.html((storyState+1) + "/" + (annotations.length+1));
+			d3.select('.curvatureLine').style('opacity','0');
+			d3.select('.secLine').style('opacity','0');
+			yScale.domain(data.yDomain);
+			svg.select('.yAxis').call(yAxis);
+			xScale.domain(data.xDomain);
+			svg.select('.xAxis').call(xAxis);
+			plot.selectAll('circle').remove()
+			plot.selectAll('circle')
+	        .data(data.coords)
+	        .enter()
+	        .append('circle')
+	            .attr({
+	                'class':'circles',
+	                'cx': function(d) { return xScale(d[0]) },
+	                'cy': function(d) { return yScale(d[1]) },
+	                'r': circleSize,
+	                'id': function(d) { return d[2] },
+	                'fill': '#F00'
+	            });
+			return storyState;
+		}
+
 		function changeAnno (newAnno) {
 			d3.select(".annotation")
 				.style("opacity",0)
@@ -181,6 +209,7 @@ export default function(){
         //function to incrementally draw the cumulative dots
 
         function drawCumulativeDots(end) {
+
 			plot.selectAll('circle')
 				.data(data.coords.slice(0,end))
 		        .enter()
@@ -243,11 +272,19 @@ export default function(){
 			.attr("class","animatebutton")
 			.html("Next &raquo;");
 
+		var resetBtn = d3.select(".buttonHolder").append("span")
+			.attr("class","resetbutton hidden")
+			.html("Reset");
+
 		forBtn.on("click", function(){
 			swipeForward();
 		});
 		backBtn.on("click",function(){
 			swipeBack();
+		});
+
+		resetBtn.on('click', function(){
+			reset();
 		});
 	    
 	    var svg = parent
