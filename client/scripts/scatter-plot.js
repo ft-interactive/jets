@@ -107,11 +107,52 @@ export default function(){
 			function(){
 				changeAnno(anno8);
 				drawCumulativeDots(data.coords.length)
+				d3.select('.animatebutton').attr('class','animatebutton.hidden');
 			}
 		]
 
 		let backAnimations = [
-
+			function() {},
+			function() {
+				changeAnno(anno0); 
+				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
+				d3.select('.backbutton').attr('class','backbutton hidden');
+				d3.select('.resetbutton').attr('class','resetbutton hidden');
+			},
+			function() {
+				changeAnno(anno1);
+				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
+				d3.select('#Morgan_Stanley').attr('class','circles').attr('r', '2');
+			},
+			function() {
+				changeAnno(anno2)
+				d3.select('#Morgan_Stanley').attr('class','circles.highlight').attr('r','5');
+				d3.select('#Kansas_City_Southern').attr('class','circles').attr('r','2');
+				d3.select('rect.secLine').style('opacity','0');
+			},
+			function() {
+				changeAnno(anno3);
+				rescaleX(173);
+				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
+			},
+			function() {
+				changeAnno(anno4);
+				d3.select('.curvatureLine').remove();
+			},
+			function() {
+				changeAnno(anno5);
+				d3.select('.curvatureLine').style('opacity','1');
+				d3.select('.secLine').style('opacity','0.3');
+				d3.selectAll('.circles').remove();
+				d3.select('.cumulativeRect').remove();
+				resetYScale();
+				drawCircles();
+			},
+			function() {
+				changeAnno(anno6);
+			},
+			function() {changeAnno(anno7)},
+			function() {changeAnno(anno8)},
 		]
 
 		console.log(data.coords[10])
@@ -128,6 +169,7 @@ export default function(){
 				counter.html((storyState+2) + "/" + (annotations.length+1))
 				return storyState=storyState+1;
 			}
+			console.log(storyState)
 		}
 
 		function swipeBack() {	
@@ -136,6 +178,7 @@ export default function(){
 			} else if (storyState == 0) {
 
 			} else {
+				console.log(storyState);
 				backAnimations[storyState]();
 				counter.html((storyState) + "/" + (annotations.length+1))
 				storyState-=1;
@@ -149,23 +192,11 @@ export default function(){
 			counter.html((storyState+1) + "/" + (annotations.length+1));
 			d3.select('.curvatureLine').style('opacity','0');
 			d3.select('.secLine').style('opacity','0');
-			yScale.domain(data.yDomain);
-			svg.select('.yAxis').call(yAxis);
+			resetYScale();
 			xScale.domain(data.xDomain);
 			svg.select('.xAxis').call(xAxis);
-			plot.selectAll('circle').remove()
-			plot.selectAll('circle')
-	        .data(data.coords)
-	        .enter()
-	        .append('circle')
-	            .attr({
-	                'class':'circles',
-	                'cx': function(d) { return xScale(d[0]) },
-	                'cy': function(d) { return yScale(d[1]) },
-	                'r': circleSize,
-	                'id': function(d) { return d[2] },
-	                'fill': '#F00'
-	            });
+			plot.selectAll('circle').remove();
+			drawCircles();
 			return storyState;
 		}
 
@@ -193,6 +224,11 @@ export default function(){
             svg.select('.yAxis')
 	            .transition().duration(1500).ease('sin')
 	            .call(yAxis);
+		}
+		function resetYScale() {
+			yScale.domain(data.yDomain)
+			svg.select('.yAxis')
+				.call(yAxis);
 		}
 
 		//function for incrementally drawing the curvature line line
@@ -335,18 +371,20 @@ export default function(){
                 transform:'translate(' + margin.left + ',' + margin.top + ')' 
             });
 
-	    var circles = plot.selectAll('circle')
-	        .data(data.coords)
-	        .enter()
-	        .append('circle')
-	            .attr({
-	                'class':'circles',
-	                'cx': function(d) { return xScale(d[0]) },
-	                'cy': function(d) { return yScale(d[1]) },
-	                'r': circleSize,
-	                'id': function(d) { return d[2] },
-	                'fill': '#F00'
-	            });
+	    var drawCircles = function() {plot.selectAll('circle')
+		        .data(data.coords)
+		        .enter()
+		        .append('circle')
+		        .attr({
+		            'class':'circles',
+		            'cx': function(d) { return xScale(d[0]) },
+		            'cy': function(d) { return yScale(d[1]) },
+		            'r': circleSize,
+		            'id': function(d) { return d[2] },
+		            'fill': '#F00'
+		        });
+		    };
+		drawCircles()
 
 	// Draw annotations
 
