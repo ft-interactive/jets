@@ -29,36 +29,69 @@ body {
     }
 
   h1 {
+    color: oColorsGetPaletteColor('grey-tint5');
     font-family: $font-display;
     font-weight: normal;
     text-align: center;
     font-size: 2.5em;
-    margin: 1.2rem 0 0.6rem;
+    line-height: 46px;
+    margin: 2.2rem 0 0;
   }
   h2 {
+    color: oColorsGetPaletteColor('grey-tint2');
     font-family: $font-display;
     font-weight: normal;
-    font-style: italic;
-    text-align: center;
-    font-size: 1.5em;
-    margin: 1.2rem 0 0.6rem;
+    font-size: 1.3em;
+    max-width: 660px;
+    margin: 1em auto 12px;
   }
 
   h6 {
   max-width: 600px;
   margin: 0 auto;
-  color: oColorsGetPaletteColor('pink-tint5');
+  color: oColorsGetPaletteColor('claret');
+  font-family: $font-display;
   font-weight: 200;
+  font-style: italic;
   text-align: center;
-  margin-top: 1em;
-  font-size: 0.875em;
+  margin-top: 5px;
+  font-size: 0.95em;
   > .bullet {
     margin: 0 10px;
     }
   }
 
+  .timestamp{
+  color: oColorsGetPaletteColor('warm-6');
+  font-family: $font-sans;
+  font-size: 12px;
+  font-style: normal;
+
+  }
+
+.social-icon-wrapper{
+
+    display: flex;
+    justify-content: center;
+    align-content: space-around;
+    margin: 30px auto;
+  
+}
+
+.o-ft-icons-icon{
+    width: 40px;
+    font-size: 28px;
+    opacity: .3;
+
+
+}
+
+
 p {
+  color: oColorsGetPaletteColor('grey-tint5');
   font-family: $font-serif;
+  font-size: 16px;
+  line-height: 24px;
   max-width: 660px;
   margin: 1em auto;
   padding: 0 10px;
@@ -68,7 +101,13 @@ text {
   font-family: $font-sans;
 }
 
+.o-grid-container {
+  margin-top: 30px;
+  }
+
 .viz {
+  border-top: 1px solid oColorsGetPaletteColor('pink-tint2');
+  border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
   margin: 0 auto;
 }
 
@@ -80,13 +119,19 @@ rect {
 .label { 
   text-anchor: end; 
 }
+
+
 .chart-title { 
-  font-size: 21px;
+
+
+  padding:20px 10px;
+  font-size: 24px;
+  font-weight: 200;
   display:block;
 }
 
 .chart-subtitle { 
-  font-size: 14px;
+  font-size: 18px;
   display:block;
 }
 
