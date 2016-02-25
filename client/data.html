@@ -71,8 +71,10 @@
 
     <main role="main">
       <h1>How the FT compiled a database on aircraft perquisites at the biggest US-listed companies</h1>
-      <p>The Financial Times has published <a href="/index.html">an article</a> opening a window onto the world of corporate jets perquisites... </p>
-      <h2>About the data</h2>
+      <hr>
+      <h2>The Financial Times has published <a class="standfirst-link" href="/index.html">an article</a> opening a window onto the world of corporate jets perquisites... </h2>
+      <article>
+      <h3>About the data</h3>
       <p>To compile this database on executives’ personal use of company planes, the FT manually inspected nearly a thousand company filings to the Securities and Exchanges Commission. We looked at annual proxy filings (also known as DEF 14A filings) of S&P 500 companies across two financial years (FY2013 and FY2014).</p>
 
       <p>Where a DEF 14A was not available (for example due to mergers and acquisitions activity), we looked for other proxy statements filed by the company that contained the information, such as PRE 14A statements.</p>
@@ -84,22 +86,27 @@
       <p>This left us with 322 executives across 184 companies.</p>
 
       <p>We entered the data into a Google spreadsheet, and then used R, the statistical programming language, to conduct our analysis.</p>
+      </article>
 
-      <h3>Footnotes</h3>
-           <ul>
-        <li>There is no data available for Mylan in 2014 because the company did not file a proxy statement with that information that year.</li>
-        <li>The amounts quoted for Humana and Duke Energy overstate the value of aircraft perquisites given to their executives when compared to other companies in our database. Both Humana and Duke Energy included, in their reported figure, the value of disallowed corporate income tax deductions. Other companies either explicitly excluded that amount, or did not make clear whether that cost was included. Humana and Duke Energy said they included that amount, but did not break out the value of it, so we were not able to exclude that from our calculations.</li>
-        <li>The amount quoted for CBS executives overstate the value of aircraft perquisites, since the figure reported by CBS is for "transportation-related benefits" and includes the cost for a personal car and driver. Other companies report car and airplane perquities separately.  
-      </ul>
-
-      <h3>Download the data</h3>
-      <p>Click here to download the full data set as a .csv file. It includes information on the value of personal use of corporate aircraft perquisites for each individual in 2013 and 2014, as well as links to the individual Securities and Exchanges Commission filings that are the source of that information.</p>
-
-
+      <section>
+        <h3>Footnotes</h3>
+             <ul>
+          <li>There is no data available for Mylan in 2014 because the company did not file a proxy statement with that information that year.</li>
+          <li>The amounts quoted for Humana and Duke Energy overstate the value of aircraft perquisites given to their executives when compared to other companies in our database. Both Humana and Duke Energy included, in their reported figure, the value of disallowed corporate income tax deductions. Other companies either explicitly excluded that amount, or did not make clear whether that cost was included. Humana and Duke Energy said they included that amount, but did not break out the value of it, so we were not able to exclude that from our calculations.</li>
+          <li>The amount quoted for CBS executives overstate the value of aircraft perquisites, since the figure reported by CBS is for "transportation-related benefits" and includes the cost for a personal car and driver. Other companies report car and airplane perquities separately.  
+        </ul>
+      </section>
+      <section>
+        <h3>Download the data</h3>
+        <p>Click here to download the full data set as a .csv file. It includes information on the value of personal use of corporate aircraft perquisites for each individual in 2013 and 2014, as well as links to the individual Securities and Exchanges Commission filings that are the source of that information.</p>
+      </section>
+<section>
       <h3>Explore the full data set</h3>
+       </section>
       <div>
         <iframe frameborder="0" height="9300" scrolling="no" src="http://www.ft.com/ig/widgets/sortable-table/v2/table.html#filter=1&id=1mXHAcZQjj9Hy3oKwaXwXrKUAv-5xH7zxQ6Sdjw-lnXo" width="100%"><!--.--></iframe>
       </div>
+
 
     </main>
 
