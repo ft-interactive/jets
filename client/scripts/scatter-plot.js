@@ -381,7 +381,8 @@ export default function(){
 		            'cy': function(d) { return yScale(d[1]) },
 		            'r': circleSize,
 		            'id': function(d) { return d[2] },
-		            'fill': '#F00'
+		            'fill': 'purple',
+		            'opacity': '0.9'
 		        });
 		    };
 		drawCircles()
@@ -391,6 +392,8 @@ export default function(){
 		svg.append('text')
 			.attr({
 				'class':'annotation',
+				'font-size' : '20px',
+				'text-anchor':'end',
 				'y':function(){
 					return 150;
 				},

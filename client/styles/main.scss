@@ -49,9 +49,9 @@ hr {
 
   h2 {
     color: oColorsGetPaletteColor('grey-tint2');
-    font-family: $font-display;
-    font-weight: normal;
-    font-size: 1.3em;
+    font-family: $font-sans;
+    font-weight: 200;
+    font-size: 1.45em;
     line-height: 1.2em;
     max-width: 620px;
     margin: 1em auto 12px;
@@ -283,8 +283,8 @@ rect {
 }
 
 .circles { 
-  fill-opacity: 0.4;
-  stroke-width: 1px;
+  fill-opacity: 0.5;
+  //stroke-width: 1px;
 }
 
 .circles.highlight {
@@ -306,7 +306,7 @@ rect {
 }
 
 article h3{
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .standfirst-link{
@@ -345,9 +345,8 @@ section p {
  font-size: 16px;
  line-height: 21px;
  color:oColorsGetPaletteColor('grey-tint3');
-
- 
 }
+
 
 section li {
   padding-bottom: 20px;
