@@ -87,7 +87,7 @@ body {
     text-align: center;
     font-size: 2.5em;
     line-height: 46px;
-    margin: 2.0rem auto;
+    margin: 2.0rem auto 10px;
     max-width: 780px;
   }
 
@@ -119,13 +119,12 @@ hr {
 
   h6 {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   color: oColorsGetPaletteColor('claret');
   font-family: $font-display;
   font-weight: 200;
   font-style: italic;
   text-align: center;
-  margin-top: 5px;
   font-size: 0.95em;
   > .bullet {
     margin: 0 10px;
@@ -192,27 +191,64 @@ max-width: 620px;
 }
 
 .story-fact-card {
- width: 300px;
-  height: 200px;
+  width: 380px;
+  height: 180px;
   background-color: white;
   display: inline-block;
   float: left;
-  margin-left: 50px;
+  //margin-left: 50px;
   margin-right: 10px;
   border-radius: 10px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
+  -moz-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
+  box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
 
 }
 
-.fact-words{
+.fact-card-wrapper{
+  display: flex;
+  margin: 10px 10px;
 
+
+
+}
+
+.card-icon {
+    width: 61px;
+    height: 37px;
+    padding: 5px 10px 0px 0px;
+   
+}
+
+.story-card-link{
+    margin-bottom: 20px;
+    margin-right: 20px;
+    float: right;
+    font-family: $font-sans;
+    font-size: 16px; 
+    color: #27757b;
+    border-bottom: 1px dotted #27757b;
+    text-decoration: none;
+
+}
+
+.story-fact-words{
+  font-family: $font-sans;
+  color: oColorsGetPaletteColor('grey-tint3');
+  font-size: 19px;
+  font-weight: 200;
+  line-height: 23px;
+}
+
+.fact-words{
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 19px;
   font-weight: 200;
   line-height: 23px;
   padding: 20px;
-
 }
+
 
 .fact-words a {
 
@@ -222,12 +258,8 @@ max-width: 620px;
 }
 
 
-
 .fact-card {
    border-radius: 10px;
-  color: oColorsGetPaletteColor('grey-tint3');
-  font-size: 19px;
-  font-weight: 200;
   margin: 10px auto;
   max-width: 800px;
   background-color: white;
@@ -481,7 +513,7 @@ section li {
   justify-content:center;
   max-width: 320px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 article{
