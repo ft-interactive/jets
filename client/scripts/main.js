@@ -35,3 +35,5 @@ function dataLoaded(error, data) {
 
 d3.csv(dataLocation, dataLoaded);
 
+var oShare = require('o-share');
+var oShareInstance = new oShare(document.querySelector('[data-o-component=o-share]'));
