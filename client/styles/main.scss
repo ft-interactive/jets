@@ -6,6 +6,7 @@
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
 $font-display: FinancierDisplayWeb, Georgia, serif;
+$o-share-is-silent: false;
 
 body {
   @include oColorsFor(page, background);
@@ -29,6 +30,55 @@ body {
     .masthead {
       height: 18px;
     }
+
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.share-links {  
+  margin-left: 10px;
+  > p { @include visually-hidden; }
+
+  > ul {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      display: inline-block;
+      &:not(:first-of-type) { margin-left: 10px; }
+    }
+  }
+
+  &__link {
+    $size: 40px;
+
+    display: block;
+    width: $size;
+    height: $size;
+    border-radius: 2px;
+    background-size: $size $size;
+
+    &--twitter { background-image: url('/assets/twitter_icon.svg'); }
+    &--facebook { background-image: url('/assets/facebook_icon.svg'); }
+    &--linked-in { background-image: url('/assets/linkedin_icon.svg'); }
+
+    &:hover { background-color: oColorsGetPaletteColor('pink-tint2'); }
+    &:active { background-color: oColorsGetPaletteColor('pink-tint3'); }
+
+    > span { @include visually-hidden; }
+  }
+
+}
+
+
+
 
   h1 {
     color: oColorsGetPaletteColor('grey-tint5');
