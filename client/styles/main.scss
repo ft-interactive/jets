@@ -48,10 +48,10 @@ hr {
 }
 
   h2 {
-    color: oColorsGetPaletteColor('grey-tint2');
+    color: oColorsGetPaletteColor('grey-tint4');
     font-family: $font-sans;
     font-weight: 200;
-    font-size: 1.45em;
+    font-size: 1.35em;
     line-height: 1.2em;
     max-width: 620px;
     margin: 1em auto 12px;
@@ -95,6 +95,11 @@ hr {
     justify-content: center;
     align-content: space-around;
   
+}
+
+.data-o-component ul{
+margin:0;
+
 }
 
 // .o-ft-icons-icon{
@@ -331,11 +336,20 @@ section{
   max-width: 620px
 }
 
+.download-data-container{
+  display: flex;
+  flex-direction:row;
 
+}
+
+.download-csv{
+  padding-right: 10px;
+}
 
 section h3 {
  
-  margin-top: 20px;
+      margin-top: 20px;
+    margin-bottom: 10px;
   
 }
 
@@ -352,6 +366,17 @@ section li {
   padding-bottom: 20px;
 }
 
+.link-container{
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  max-width: 320px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+
 article{
   margin:0 auto;
  
@@ -359,9 +384,7 @@ article{
   max-width:620px;
 }
 
-div iframe {
-  margin-top: 20px;
-}
+
 
 .credits{
 
