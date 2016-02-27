@@ -1,7 +1,7 @@
 #This script used to properly format the historical data for the 10 individual companies we looked at  
 
 # Set working directory and and libraries 
-setwd("/Users/robin.kwong/old/Air travel project/working folder")
+setwd("~/newsapps/JetsR")
 library(dplyr)
 library(tidyr)
 

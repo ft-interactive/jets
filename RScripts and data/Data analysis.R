@@ -1,12 +1,11 @@
 # This script was used to analyse the data to find the top spending companies and recipient executives
 # as well as to see if there was a skew in the distribution of spending across companies,
 # It also looks at: spending by industry, male/female ratios, correlation with market cap, location of spenders' HQs
-
 #function for trimming trailing/leading white spaces
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 
 #set working directory and load packages
-setwd("/Users/robin.kwong/old/Air travel project/working folder")
+setwd("~/newsapps/JetsR")
 packages <-c("ggplot2","tidyr","dplyr")
 lapply(packages,require,character.only=T)
 
