@@ -1,0 +1,174 @@
+"x","y","name","y1"
+1,1191972,"Freeport-McMoRan",1191972
+2,1187865,"Comcast Corp",2379837
+3,1113371,"Tyson Foods",3493208
+4,1049798,"Wynn Resorts",4543006
+5,1035119,"Constellation Brands",5578125
+6,954443,"Ford Motor",6532568
+7,940231,"Leucadia National",7472799
+8,868847,"Boeing Co",8341646
+9,800420,"DaVita HealthCare Partner",9142066
+10,788468,"Expedia",9930534
+11,749844,"CBS Corp",10680378
+12,672400,"Google",11352778
+13,638608,"General Electric",11991386
+14,610454,"Facebook",12601840
+15,606080,"Procter & Gamble",13207920
+16,575118,"Honeywell International",13783038
+17,555300,"AbbVie",14338338
+18,530585,"Viacom",14868923
+19,479572,"Wal-Mart Stores",15348495
+20,478545,"Bank of America",15827040
+21,458144,"Twenty-First Century Fox",16285184
+22,451816,"Dollar General",16737000
+23,441319,"Raytheon Co",17178319
+24,432223,"Emerson Electric",17610542
+25,420924,"Aetna",18031466
+26,402946,"Anadarko Petroleum",18434412
+27,402400,"Discovery Communications",18836812
+28,391411,"Walt Disney Co",19228223
+29,389790,"Halliburton Co",19618013
+30,376981,"Ralph Lauren Corp",19994994
+31,373304,"Philip Morris International",20368298
+32,368845,"Yum Brands",20737143
+33,350564,"Macerich Co",21087707
+34,350000,"BlackRock",21437707
+35,332644,"Duke Energy",21770351
+36,314810,"Simon Property Group",22085161
+37,313295,"Motorola Solutions",22398456
+38,311337,"Omnicom Group",22709793
+39,309486,"General Motors",23019279
+40,298333,"Corning",23317612
+41,274288,"Johnson & Johnson",23591900
+42,268680,"Danaher Corp",23860580
+43,258295,"Waste Management",24118875
+44,258086,"Caterpillar",24376961
+45,252115,"Northrop Grumman",24629076
+46,251666,"Hewlett-Packard",24880742
+47,249519,"Time Warner Cable",25130261
+48,237968,"Morgan Stanley",25368229
+49,237718,"ACE Limited",25605947
+50,234582,"Pfizer",25840529
+51,233579,"NiSource",26074108
+52,225649,"Coca-Cola Enterprises",26299757
+53,221240,"Dow Chemical",26520997
+54,218568,"Lockheed Martin",26739565
+55,217954,"Abbott Laboratories",26957519
+56,214447,"Tenet Healthcare",27171966
+57,208615,"Newell Rubbermaid",27380581
+58,200846,"ConocoPhillips",27581427
+59,199273,"International Business Machines",27780700
+60,195724,"Union Pacific",27976424
+61,194283,"Carnival Corp",28170707
+62,190224,"Altria Group",28360931
+63,190191,"EMC Corp",28551122
+64,185648,"Target Corp",28736770
+65,181638,"American Express",28918408
+66,179993,"Kohl's Corp",29098401
+67,178908,"Cablevision Systems",29277309
+68,178593,"Coca-Cola Co",29455902
+69,173613,"Murphy Oil",29629515
+70,172157,"Ameriprise Financial",29801672
+71,169992,"Precision Castparts",29971664
+72,163038,"PPG Indus",30134702
+73,161828,"Qualcomm",30296530
+74,161410,"CarMax",30457940
+75,158243,"3M Co",30616183
+76,157829,"Ingersoll-Rand Plc",30774012
+77,157544,"AutoNation",30931556
+78,156584,"Exelon Corp",31088140
+79,152936,"PepsiCo",31241076
+80,152072,"Mondelez International",31393148
+81,151871,"General Dynamics",31545019
+82,151855,"Humana",31696874
+83,150992,"Archer-Daniels-Midland",31847866
+84,147810,"Cigna Corp",31995676
+85,145832,"Tyco International",32141508
+86,144980,"Monsanto Co",32286488
+87,143974,"Whirlpool Corp",32430462
+88,143576,"Genuine Parts",32574038
+89,142982,"ConAgra Foods",32717020
+90,142594,"Home Depot",32859614
+91,141123,"Verizon Communications",33000737
+92,140787,"eBay",33141524
+93,139384,"INVESCO Ltd",33280908
+94,138704,"GameStop Corp",33419612
+95,135494,"CA",33555106
+96,132785,"Wyndham Worldwide",33687891
+97,131844,"Linear Technology Corp",33819735
+98,130879,"McKesson Corp",33950614
+99,129549,"CR Bard",34080163
+100,128143,"Air Products & Chemicals",34208306
+101,123948,"Franklin Resources",34332254
+102,122650,"Cerner Corp",34454904
+103,122164,"McDonald's Corp",34577068
+104,120407,"Huntington Bancshares",34697475
+105,119194,"Praxair",34816669
+106,118672,"Cummins",34935341
+107,115476,"United Technologies",35050817
+108,112577,"AT&T",35163394
+109,110690,"Gap",35274084
+110,107658,"FMC Corp",35381742
+111,106410,"Spectra Energy",35488152
+112,103610,"Time Warner",35591762
+113,101112,"Chevron Corp",35692874
+114,99773,"Masco Corp",35792647
+115,99357,"Cardinal Health",35892004
+116,99189,"Marriott International",35991193
+117,98308,"Eastman Chemical",36089501
+118,95939,"International Paper",36185440
+119,94954,"Lowe's Companies",36280394
+120,93999,"Quest Diagnostics",36374393
+121,92768,"Eaton Corp Plc",36467161
+122,92361,"Fidelity National Information Services",36559522
+123,91637,"AFLAC",36651159
+124,91471,"Reynolds American",36742630
+125,91457,"Marsh & McLennan",36834087
+126,87137,"Progressive Corp",36921224
+127,84227,"Xerox Corp",37005451
+128,81072,"Owens-Illinois",37086523
+129,80051,"Deere & Co",37166574
+130,77246,"Du Pont",37243820
+131,75972,"CONSOL Energy",37319792
+132,75000,"Macy's",37394792
+133,72468,"Republic Services",37467260
+134,72160,"Ecolab",37539420
+135,71792,"Dominion Resources",37611212
+136,71560,"VF Corp",37682772
+137,69920,"Norfolk Southern",37752692
+138,68401,"Dr Pepper Snapple Group",37821093
+139,66900,"Hartford Finl Services Gp",37887993
+140,66725,"MasterCard",37954718
+141,63428,"Helmerich & Payne",38018146
+142,63405,"Bank of New York Mellon",38081551
+143,62784,"Marathon Petroleum",38144335
+144,59865,"Allstate Corp",38204200
+145,59530,"FedEx Corp",38263730
+146,57908,"Intercontinental Exchange",38321638
+147,57759,"FirstEnergy Corp",38379397
+148,57095,"Texas Instruments",38436492
+149,56800,"Total System Services",38493292
+150,56336,"Kimberly-Clark",38549628
+151,55332,"Amgen",38604960
+152,54436,"Harris Corp",38659396
+153,53770,"Chubb Corp",38713166
+154,49497,"JPMorgan Chase & Co",38762663
+155,48114,"J M Smucker",38810777
+156,47623,"Alcoa",38858400
+157,47156,"Lincoln National",38905556
+158,46390,"Lennar Corp",38951946
+159,46293,"CVS Health Corp",38998239
+160,42366,"Boston Scientific",39040605
+161,40548,"Ball Corp",39081153
+162,39147,"Apache Corp",39120300
+163,38069,"Walgreen Boots Alliance",39158369
+164,35938,"Devon Energy",39194307
+165,35890,"Sherwin-Williams",39230197
+166,35370,"CSX Corp",39265567
+167,34975,"Anthem Inc",39300542
+168,32379,"Southern Co",39332921
+169,32339,"Exxon Mobil",39365260
+170,31991,"Torchmark Corp",39397251
+171,28000,"Regions Financial",39425251
+172,26995,"PNC Financial Services",39452246
+173,25730,"Kansas City Southern",39477976
