@@ -24,7 +24,7 @@
     <script src="scripts/top.js"></script>
     <!-- endbuild -->
     <!-- endsmoosh -->
-    <link rel="stylesheet" href="https://h2.ft.com/build/v2/bundles/css?modules=o-footer@^4,o-fonts@^2,o-grid@^4,o-ft-icons@^2.0.0,o-buttons@^3">
+    <link rel="stylesheet" href="https://h2.ft.com/build/v2/bundles/css?modules=n-normalize@^1,o-footer@^4,o-fonts@^2,o-grid@^4,o-ft-icons@^2.0.0,o-buttons@^3">
 
     <!-- smoosh -->
     <!-- build:css styles/top.css -->
@@ -100,12 +100,18 @@
       <div class="o-grid-container">
         <div class="o-grid-row">
           <!-- two divs, spanning a total of 12 columns -->
-          <div data-o-grid-colspan="10" class="viz" id="scatter"></div>
+          <div data-o-grid-colspan="10" class="viz" id="scatter">
+            <div class="panel">
+              <div class="o-buttons__group">
+               <button class="o-buttons o-buttons--big" id="backButton"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-left"></i></button><!--
+            --><button class="o-buttons o-buttons--big" id="forwardButton"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-right"></i></button>
+                <span class="slideCounter"><span class="slideCounter-number" id="currentSlide"></span> of <span class="slideCounter-number" id="totalSlide"></span></span>
+                <div class="annotation"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      <div class="o-buttons__group">
-       <button class="o-buttons o-buttons--big"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-left"></i></button><!--
-    --><button class="o-buttons o-buttons--big"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-right"></i></button>
-      </div>
+
         <p class="chart-link"><a class="page-links" href="/data.html">About the data</a></p>
       </div>
         <article>

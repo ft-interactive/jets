@@ -1,14 +1,9 @@
-@import 'n-normalize/main';
 @import 'o-colors/main';
-@import 'o-share/main';
-@import "o-ft-icons/main";
-@import "o-buttons/main";
 
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
 $font-display: FinancierDisplayWeb, Georgia, serif;
-$o-share-is-silent: false;
-$o-buttons-is-silent: false;
+
 
 body {
   @include oColorsFor(page, background);
@@ -79,9 +74,6 @@ body {
 
 }
 
-
-
-
   h1 {
     color: oColorsGetPaletteColor('grey-tint5');
     font-family: $font-display;
@@ -96,7 +88,7 @@ body {
 hr {
   margin: 2.0rem auto;
   border: 1px solid oColorsGetPaletteColor('pink-tint3');
-  width:80px;
+  width: 80px;
 }
 
   h2 {
@@ -133,7 +125,7 @@ hr {
     }
   }
 
-  .timestamp{
+  .timestamp {
   color: oColorsGetPaletteColor('warm-6');
   font-family: $font-sans;
   font-size: 12px;
@@ -141,7 +133,7 @@ hr {
 
   }
 
-.social-icon-wrapper{
+.social-icon-wrapper {
 
     display: flex;
     justify-content: center;
@@ -149,8 +141,8 @@ hr {
   
 }
 
-.data-o-component ul{
-margin:0;
+.data-o-component ul {
+margin: 0;
 
 }
 
@@ -167,7 +159,7 @@ p {
   font-size: 16px;
   line-height: 24px;
   max-width: 620px;
-  margin: .5em auto;
+  margin: 0.5em auto;
   //padding: 0 0px;
 }
 
@@ -183,12 +175,12 @@ text {
 }
 
 .about-data-link {
-   color: #27757b ;
-   border-bottom: 1px dotted #27757b ;
+   color: #27757b;
+   border-bottom: 1px dotted #27757b;
    text-decoration: none;
 }
 
-.fact-card-section{
+.fact-card-section {
 max-width: 620px;
 }
 
@@ -254,7 +246,7 @@ img .market-rate{
 }
 
 
-.story-card-link{
+.story-card-link {
     margin-right: 20px;
     float: right;
     font-family: $font-sans;
@@ -266,7 +258,7 @@ img .market-rate{
 
 }
 
-.story-fact-words{
+.story-fact-words {
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 20px;
@@ -279,7 +271,7 @@ img .market-rate{
   margin-bottom: 15px;
 }
 
-.fact-words{
+.fact-words {
 
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
@@ -289,14 +281,12 @@ img .market-rate{
   padding: 20px 25px 25px 20px;
 }
 
-
 .fact-words a {
 
-   color: #27757b ;
-   border-bottom: 1px dotted #27757b ;
+   color: #27757b;
+   border-bottom: 1px dotted #27757b;
    text-decoration: none;
 }
-
 
 .fact-card {
    border-radius: 10px;
@@ -317,6 +307,20 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
   border-top: 1px solid oColorsGetPaletteColor('pink-tint2');
   border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
   margin: 0 auto;
+  position: relative;
+}
+
+.panel {
+  background-color: white;
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  max-width: 315px;
+}
+
+.annotations {
+  display: block;
+  clear: both;
 }
 
 rect {
@@ -341,7 +345,7 @@ rect {
 .chart-subtitle { 
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 18px;
-  display:block;
+  display: block;
 }
 
 .chart-source { 
@@ -354,6 +358,10 @@ rect {
 .buttonHolder {
   display:block;
   margin-top:20px;
+}
+
+.buttonHolder > * {
+  margin-right: 5px;
 }
 
 .o-buttons__pagination{
@@ -377,95 +385,6 @@ rect {
 
 .chart-link{
   margin-bottom: 20px
-}
-
-
-.animatebutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-right:5px;
-}
-
-.animatebutton:hover{
-  background-color:#275e86;
-}
-
-.animatebutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
-}
-
-
-.slideCounter{min-width:32px;
-  text-align:center;
-  position:relative;
-  padding:5px 2px;
-  border-radius:0px;
-  color:#43423e;
-  border:0px solid #275e86;
-  transition:0.3s;
-  cursor:default;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin:0px 3px;
-}
-
-.backbutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-left:5px;
-}
-
-.backbutton:hover{
-  background-color:#275e86;
-}
-
-.backbutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
-}
-
-.resetbutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-left:5px;
-}
-
-.resetbutton:hover{
-  background-color:#275e86;
-}
-
-.resetbutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
 }
 
 .circles { 

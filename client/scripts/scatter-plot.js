@@ -14,7 +14,7 @@ export default function(){
 	let margin = {
 	    top:120,
 	    left:50,
-	    bottom:50,
+	    bottom:100,
 	    right:30
 	};
 	let width = 600;
@@ -48,8 +48,7 @@ export default function(){
 			function(){
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
-				d3.select('.backbutton.hidden').attr('class','backbutton');
-				d3.select('.resetbutton.hidden').attr('class','resetbutton');
+				d3.select('#backButton[disabled]').attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno2);
@@ -107,7 +106,7 @@ export default function(){
 			function(){
 				changeAnno(anno8);
 				drawCumulativeDots(data.coords.length)
-				d3.select('.animatebutton').attr('class','animatebutton.hidden');
+				d3.select('#forwardButton').attr('disabled','disabled');
 			}
 		]
 
@@ -116,8 +115,7 @@ export default function(){
 			function() {
 				changeAnno(anno0); 
 				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
-				d3.select('.backbutton').attr('class','backbutton hidden');
-				d3.select('.resetbutton').attr('class','resetbutton hidden');
+				d3.select('#backButton').attr('disabled', 'disabled');
 			},
 			function() {
 				changeAnno(anno1);
@@ -166,7 +164,7 @@ export default function(){
 
 			} else {
 				animations[storyState]();
-				counter.html((storyState+2) + "/" + (annotations.length+1))
+				slideCount.html(storyState+2)
 				return storyState=storyState+1;
 			}
 			console.log(storyState)
@@ -180,33 +178,15 @@ export default function(){
 			} else {
 				console.log(storyState);
 				backAnimations[storyState]();
-				counter.html((storyState) + "/" + (annotations.length+1))
+				slideCount.html(storyState)
 				storyState-=1;
 				return storyState;
 			}
 		}
 
-		function reset() {
-			storyState = 0;
-			changeAnno(anno0);
-			counter.html((storyState+1) + "/" + (annotations.length+1));
-			d3.select('.curvatureLine').style('opacity','0');
-			d3.select('.secLine').style('opacity','0');
-			resetYScale();
-			xScale.domain(data.xDomain);
-			svg.select('.xAxis').call(xAxis);
-			plot.selectAll('circle').remove();
-			drawCircles();
-			return storyState;
-		}
-
 		function changeAnno (newAnno) {
 			d3.select(".annotation")
-				.style("opacity",0)
-			setTimeout(function(){
-				d3.select(".annotation").style("opacity",1).text(newAnno);
-				wrap(d3.select('.annotation'), Math.min(300, width*2/5));
-			},500)
+			  .html(newAnno)
 		}
 
 		function rescaleX(newDomainMax) {
@@ -278,7 +258,7 @@ export default function(){
 	    var yAxis = d3.svg.axis()
 		    .scale(yScale)
 		    .orient('left')
-		    .tickFormat(d3.format('s'));
+		    .tickSize(-plotWidth, 0)
 	    
 	    //set up document structure
 
@@ -292,37 +272,24 @@ export default function(){
 			.attr('class','chart-subtitle')
 			.html(subtitle);
 
-		var buttonHolder = parent.append("span")
-			.attr("class","buttonHolder")
-			.attr('y',60);
+		changeAnno(anno0);
 
-		var backBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","backbutton hidden")
-			.html("&laquo; Back");
+		var slideCount = d3.select('#currentSlide')
+			.html(storyState+1);
 
-		var counter = buttonHolder.append('span')
-			.attr({"class":"slideCounter"})
-			.html((storyState+1) + "/" + (annotations.length));
+		var slideTotal = d3.select('#totalSlide')
+			.html(annotations.length);
 
-		var forBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","animatebutton")
-			.html("Next &raquo;");
-
-		var resetBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","resetbutton hidden")
-			.html("Reset");
-
-		forBtn.on("click", function(){
+		d3.select("#forwardButton").on("click", function(){
 			swipeForward();
 		});
-		backBtn.on("click",function(){
-			swipeBack();
+
+		d3.select("#backButton")
+			.attr('disabled', 'disabled')
+			.on("click",function(){
+				swipeBack();
 		});
 
-		resetBtn.on('click', function(){
-			reset();
-		});
-	    
 	    var svg = parent
 	        .append('svg')
 	            .attr({
@@ -338,6 +305,45 @@ export default function(){
 	            'class':'chart-source'
 	        })
 	        .html(source);
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-15;
+	            },
+	            'x':function(){
+	            	return width/2;
+	            },
+	            'class':'chart-xaxis-label-middle',
+	            'text-anchor':'middle'
+	        })
+	        .text('Rank by spending');
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-15;
+	            },
+	            'x':function(){
+	            	return margin.left;
+	            },
+	            'class':'chart-xaxis-label',
+	            'text-anchor':'start'
+	        })
+	        .text('◄ More generous');	
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-15;
+	            },
+	            'x':function(){
+	            	return margin.left + plotWidth;
+	            },
+	            'class':'chart-xaxis-label',
+	            'text-anchor':'end'
+	        })
+	        .text('Less generous ►');			
 
 	    //axes
 
@@ -363,7 +369,7 @@ export default function(){
 	            'class': 'yAxis',
 	            'transform': 'translate('+margin.left+',0)'
 	        })
-	        .call(yAxis)    
+	        .call(yAxis.ticks(10))
 
 	    var plot = svg.append('g')
             .attr({ 
@@ -386,25 +392,6 @@ export default function(){
 		        });
 		    };
 		drawCircles()
-
-	// Draw annotations
-
-		svg.append('text')
-			.attr({
-				'class':'annotation',
-				'font-size' : '20px',
-				'text-anchor':'end',
-				'y':function(){
-					return 150;
-				},
-				'dy':0,
-				'x':function(){
-					return width*3/5;
-				},
-			})
-			.text(annotations[0]);
-
-		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
 
 	// Draw shaded area showing SEC disclosure threshold
 		d3.select('g#plot').append('rect')
