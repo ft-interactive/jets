@@ -48,8 +48,7 @@ export default function(){
 			function(){
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
-				d3.select('.backbutton[disabled]').attr('disabled', null);
-				d3.select('.resetbutton[disabled]').attr('disabled', null);
+				d3.select('#backButton[disabled]').attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno2);
@@ -107,7 +106,7 @@ export default function(){
 			function(){
 				changeAnno(anno8);
 				drawCumulativeDots(data.coords.length)
-				d3.select('.animatebutton').attr('disabled','disabled');
+				d3.select('#forwardButton').attr('disabled','disabled');
 			}
 		]
 
@@ -116,8 +115,7 @@ export default function(){
 			function() {
 				changeAnno(anno0); 
 				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
-				d3.select('.backbutton').attr('disabled', 'disabled');
-				d3.select('.resetbutton').attr('disabled', 'disabled');
+				d3.select('#backButton').attr('disabled', 'disabled');
 			},
 			function() {
 				changeAnno(anno1);
@@ -166,7 +164,7 @@ export default function(){
 
 			} else {
 				animations[storyState]();
-				counter.html((storyState+2) + "/" + (annotations.length+1))
+				slideCount.html(storyState+2)
 				return storyState=storyState+1;
 			}
 			console.log(storyState)
@@ -180,33 +178,29 @@ export default function(){
 			} else {
 				console.log(storyState);
 				backAnimations[storyState]();
-				counter.html((storyState) + "/" + (annotations.length+1))
+				slideCount.html(storyState)
 				storyState-=1;
 				return storyState;
 			}
 		}
 
-		function reset() {
-			storyState = 0;
-			changeAnno(anno0);
-			counter.html((storyState+1) + "/" + (annotations.length+1));
-			d3.select('.curvatureLine').style('opacity','0');
-			d3.select('.secLine').style('opacity','0');
-			resetYScale();
-			xScale.domain(data.xDomain);
-			svg.select('.xAxis').call(xAxis);
-			plot.selectAll('circle').remove();
-			drawCircles();
-			return storyState;
-		}
+		// function reset() {
+		// 	storyState = 0;
+		// 	changeAnno(anno0);
+		// 	counter.html((storyState+1) + "/" + (annotations.length+1));
+		// 	d3.select('.curvatureLine').style('opacity','0');
+		// 	d3.select('.secLine').style('opacity','0');
+		// 	resetYScale();
+		// 	xScale.domain(data.xDomain);
+		// 	svg.select('.xAxis').call(xAxis);
+		// 	plot.selectAll('circle').remove();
+		// 	drawCircles();
+		// 	return storyState;
+		// }
 
 		function changeAnno (newAnno) {
 			d3.select(".annotation")
-				.style("opacity",0)
-			setTimeout(function(){
-				d3.select(".annotation").style("opacity",1).text(newAnno);
-				wrap(d3.select('.annotation'), Math.min(300, width*2/5));
-			},500)
+			  .html(newAnno)
 		}
 
 		function rescaleX(newDomainMax) {
@@ -292,39 +286,24 @@ export default function(){
 			.attr('class','chart-subtitle')
 			.html(subtitle);
 
-		var buttonHolder = parent.append("span")
-			.attr("class","buttonHolder")
-			.attr('y',60);
+		changeAnno(anno0);
 
-    var backBtn = d3.select(".buttonHolder").append("button")
-      .attr('disabled', 'disabled')
-			.attr("class","backbutton o-buttons o-buttons--big")
-			.html("&laquo; Back");
+		var slideCount = d3.select('#currentSlide')
+			.html(storyState+1);
 
-		var counter = buttonHolder.append('span')
-			.attr({"class":"slideCounter"})
-			.html((storyState+1) + "/" + (annotations.length));
+		var slideTotal = d3.select('#totalSlide')
+			.html(annotations.length);
 
-		var forBtn = d3.select(".buttonHolder").append("button")
-			.attr("class","animatebutton o-buttons o-buttons--big")
-			.html("Next &raquo;");
-
-    var resetBtn = d3.select(".buttonHolder").append("button")
-      .attr('disabled', 'disabled')
-			.attr("class","resetbutton o-buttons o-buttons--big")
-			.html("Reset");
-
-		forBtn.on("click", function(){
+		d3.select("#forwardButton").on("click", function(){
 			swipeForward();
 		});
-		backBtn.on("click",function(){
-			swipeBack();
+
+		d3.select("#backButton")
+			.attr('disabled', 'disabled')
+			.on("click",function(){
+				swipeBack();
 		});
 
-		resetBtn.on('click', function(){
-			reset();
-		});
-	    
 	    var svg = parent
 	        .append('svg')
 	            .attr({
@@ -340,6 +319,19 @@ export default function(){
 	            'class':'chart-source'
 	        })
 	        .html(source);
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-20;
+	            },
+	            'x':function(){
+	            	return width/2;
+	            },
+	            'class':'chart-xaxis-label',
+	            'text-anchor':'middle'
+	        })
+	        .text('Rank by spending');		
 
 	    //axes
 
@@ -388,25 +380,6 @@ export default function(){
 		        });
 		    };
 		drawCircles()
-
-	// Draw annotations
-
-		svg.append('text')
-			.attr({
-				'class':'annotation',
-				'font-size' : '20px',
-				'text-anchor':'end',
-				'y':function(){
-					return 150;
-				},
-				'dy':0,
-				'x':function(){
-					return width*3/5;
-				},
-			})
-			.text(annotations[0]);
-
-		wrap(d3.select('.annotation'), Math.min(300, width*2/5))
 
 	// Draw shaded area showing SEC disclosure threshold
 		d3.select('g#plot').append('rect')

@@ -91,7 +91,7 @@ body {
 hr {
   margin: 2.0rem auto;
   border: 1px solid oColorsGetPaletteColor('pink-tint3');
-  width:80px;
+  width: 80px;
 }
 
   h2 {
@@ -128,7 +128,7 @@ hr {
     }
   }
 
-  .timestamp{
+  .timestamp {
   color: oColorsGetPaletteColor('warm-6');
   font-family: $font-sans;
   font-size: 12px;
@@ -136,7 +136,7 @@ hr {
 
   }
 
-.social-icon-wrapper{
+.social-icon-wrapper {
 
     display: flex;
     justify-content: center;
@@ -144,8 +144,8 @@ hr {
   
 }
 
-.data-o-component ul{
-margin:0;
+.data-o-component ul {
+margin: 0;
 
 }
 
@@ -162,7 +162,7 @@ p {
   font-size: 16px;
   line-height: 24px;
   max-width: 620px;
-  margin: .5em auto;
+  margin: 0.5em auto;
   //padding: 0 0px;
 }
 
@@ -178,12 +178,12 @@ text {
 }
 
 .about-data-link {
-   color: #27757b ;
-   border-bottom: 1px dotted #27757b ;
+   color: #27757b;
+   border-bottom: 1px dotted #27757b;
    text-decoration: none;
 }
 
-.fact-card-section{
+.fact-card-section {
 max-width: 620px;
 }
 
@@ -213,7 +213,7 @@ max-width: 620px;
 }
 
 
-.story-card-link{
+.story-card-link {
     margin-right: 20px;
     float: right;
     font-family: $font-sans;
@@ -225,7 +225,7 @@ max-width: 620px;
 
 }
 
-.story-fact-words{
+.story-fact-words {
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 20px;
@@ -238,7 +238,7 @@ max-width: 620px;
   margin-bottom: 15px;
 }
 
-.fact-words{
+.fact-words {
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 19px;
@@ -250,8 +250,8 @@ max-width: 620px;
 
 .fact-words a {
 
-   color: #27757b ;
-   border-bottom: 1px dotted #27757b ;
+   color: #27757b;
+   border-bottom: 1px dotted #27757b;
    text-decoration: none;
 }
 
@@ -275,6 +275,20 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
   border-top: 1px solid oColorsGetPaletteColor('pink-tint2');
   border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
   margin: 0 auto;
+  position: relative;
+}
+
+.panel {
+  background-color: white;
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  max-width: 315px;
+}
+
+.annotations {
+  display: block;
+  clear: both;
 }
 
 rect {
@@ -299,7 +313,7 @@ rect {
 .chart-subtitle { 
   color: oColorsGetPaletteColor('grey-tint3');
   font-size: 18px;
-  display:block;
+  display: block;
 }
 
 .chart-source { 
