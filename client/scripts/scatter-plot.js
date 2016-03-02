@@ -14,7 +14,7 @@ export default function(){
 	let margin = {
 	    top:120,
 	    left:50,
-	    bottom:50,
+	    bottom:100,
 	    right:30
 	};
 	let width = 600;
@@ -272,6 +272,7 @@ export default function(){
 	    var yAxis = d3.svg.axis()
 		    .scale(yScale)
 		    .orient('left')
+		    .tickSize(-plotWidth, 0)
 		    .tickFormat(d3.format('s'));
 	    
 	    //set up document structure
@@ -323,15 +324,41 @@ export default function(){
 	    svg.append('text')
 	        .attr({
 	            'y':function(){
-	                return height-20;
+	                return height-15;
 	            },
 	            'x':function(){
 	            	return width/2;
 	            },
-	            'class':'chart-xaxis-label',
+	            'class':'chart-xaxis-label-middle',
 	            'text-anchor':'middle'
 	        })
-	        .text('Rank by spending');		
+	        .text('Rank by spending');
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-15;
+	            },
+	            'x':function(){
+	            	return margin.left;
+	            },
+	            'class':'chart-xaxis-label',
+	            'text-anchor':'start'
+	        })
+	        .text('◄ More generous');	
+
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-15;
+	            },
+	            'x':function(){
+	            	return margin.left + plotWidth;
+	            },
+	            'class':'chart-xaxis-label',
+	            'text-anchor':'end'
+	        })
+	        .text('Less generous ►');			
 
 	    //axes
 
@@ -357,7 +384,23 @@ export default function(){
 	            'class': 'yAxis',
 	            'transform': 'translate('+margin.left+',0)'
 	        })
-	        .call(yAxis)    
+	        .call(yAxis.ticks(10))
+
+
+		// svg.selectAll("line.horizontalGrid").data(yScale.ticks(9)).enter()
+		//     .append("line")
+		//         .attr(
+		//         {
+		//             "class":"horizontalGrid",
+		//             "x1" : margin.right+20,
+		//             "x2" : plotWidth,
+		//             "y1" : function(d){ return yScale(d);},
+		//             "y2" : function(d){ return yScale(d);},
+		//             "fill" : "none",
+		//             "shape-rendering" : "crispEdges",
+		//             "stroke" : "black",
+		//             "stroke-width" : "1px"
+		//         });    
 
 	    var plot = svg.append('g')
             .attr({ 
