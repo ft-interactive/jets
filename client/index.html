@@ -24,7 +24,7 @@
     <script src="scripts/top.js"></script>
     <!-- endbuild -->
     <!-- endsmoosh -->
-    <link rel="stylesheet" href="https://h2.ft.com/build/v2/bundles/css?modules=o-footer@^4,o-fonts@^2,o-grid@^4">
+    <link rel="stylesheet" href="https://h2.ft.com/build/v2/bundles/css?modules=o-footer@^4,o-fonts@^2,o-grid@^4,o-ft-icons@^2.0.0,o-buttons@^3">
 
     <!-- smoosh -->
     <!-- build:css styles/top.css -->
@@ -55,14 +55,6 @@
 
     <!-- FT tracking module 1.2.5 -->
     <script src="https://h2.ft.com/static-render-p.ft.com/scripts/a03ca392/bundles/tracking.js" async></script>
-
-    <!-- O-grid build service -->
-    <link rel="stylesheet"
-    href="//build.origami.ft.com/v2/bundles/css?modules=o-grid@^4.0.0,o-fonts@^1.4.0" />
-    <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-ft-icons@^2.0.0" />
-    <script src="//build.origami.ft.com/v2/bundles/js?modules=o-grid@^4.0.0,o-fonts@^1.4.0" async />
-
-
 
   </head>
   <body>
@@ -110,10 +102,10 @@
           <!-- two divs, spanning a total of 12 columns -->
           <div data-o-grid-colspan="10" class="viz" id="scatter"></div>
         </div>
-         <div class="o-buttons__pagination">
-            <button class="o-buttons o-buttons--big" disabled><i class="o-ft-icons-icon o-ft-icons-icon--arrow-left"></i></button>
-            <button class="o-buttons o-buttons--big"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-right"></i></button>
-          </div>
+      <div class="o-buttons__group">
+       <button class="o-buttons o-buttons--big"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-left"></i></button><!--
+    --><button class="o-buttons o-buttons--big"><i class="o-ft-icons-icon o-ft-icons-icon--arrow-right"></i></button>
+      </div>
         <p class="chart-link"><a class="page-links" href="/data.html">About the data</a></p>
       </div>
         <article>

@@ -2,11 +2,13 @@
 @import 'o-colors/main';
 @import 'o-share/main';
 @import "o-ft-icons/main";
+@import "o-buttons/main";
 
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
 $font-display: FinancierDisplayWeb, Georgia, serif;
 $o-share-is-silent: false;
+$o-buttons-is-silent: false;
 
 body {
   @include oColorsFor(page, background);
