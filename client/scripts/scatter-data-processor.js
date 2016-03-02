@@ -42,8 +42,6 @@ export default function (data) {
 		y1Domain: y1Domain
 	};
 
-	console.log(processedData)
-
 	return processedData;
 }
 
