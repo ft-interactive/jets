@@ -184,20 +184,6 @@ export default function(){
 			}
 		}
 
-		// function reset() {
-		// 	storyState = 0;
-		// 	changeAnno(anno0);
-		// 	counter.html((storyState+1) + "/" + (annotations.length+1));
-		// 	d3.select('.curvatureLine').style('opacity','0');
-		// 	d3.select('.secLine').style('opacity','0');
-		// 	resetYScale();
-		// 	xScale.domain(data.xDomain);
-		// 	svg.select('.xAxis').call(xAxis);
-		// 	plot.selectAll('circle').remove();
-		// 	drawCircles();
-		// 	return storyState;
-		// }
-
 		function changeAnno (newAnno) {
 			d3.select(".annotation")
 			  .html(newAnno)
@@ -273,7 +259,6 @@ export default function(){
 		    .scale(yScale)
 		    .orient('left')
 		    .tickSize(-plotWidth, 0)
-		    .tickFormat(d3.format('s'));
 	    
 	    //set up document structure
 
@@ -385,22 +370,6 @@ export default function(){
 	            'transform': 'translate('+margin.left+',0)'
 	        })
 	        .call(yAxis.ticks(10))
-
-
-		// svg.selectAll("line.horizontalGrid").data(yScale.ticks(9)).enter()
-		//     .append("line")
-		//         .attr(
-		//         {
-		//             "class":"horizontalGrid",
-		//             "x1" : margin.right+20,
-		//             "x2" : plotWidth,
-		//             "y1" : function(d){ return yScale(d);},
-		//             "y2" : function(d){ return yScale(d);},
-		//             "fill" : "none",
-		//             "shape-rendering" : "crispEdges",
-		//             "stroke" : "black",
-		//             "stroke-width" : "1px"
-		//         });    
 
 	    var plot = svg.append('g')
             .attr({ 

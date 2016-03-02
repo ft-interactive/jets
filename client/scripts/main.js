@@ -16,7 +16,7 @@ function dataLoaded(error, data) {
     jetSpendingScatter
     	.data(processedData)
     	.title('Spending on jet perquisites by S&P 500 comapanies')
-    	.subtitle('$\'000, in 2014')
+    	.subtitle('$m, 2014')
     	.source('Source: Securities and Exchanges Commission')
     	.circleSize(2)
     	.height(600)

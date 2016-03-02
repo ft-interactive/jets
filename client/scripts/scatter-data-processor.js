@@ -14,7 +14,7 @@ export default function (data) {
 
 	data.forEach(function (d) {
 	  x.push(d.x);
-	  y.push(d.y);
+	  y.push(d.y/1000000);
 	  y1.push(d.y1);
 	});
 
