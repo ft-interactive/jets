@@ -48,8 +48,8 @@ export default function(){
 			function(){
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
-				d3.select('.backbutton.hidden').attr('class','backbutton');
-				d3.select('.resetbutton.hidden').attr('class','resetbutton');
+				d3.select('.backbutton[disabled]').attr('disabled', null);
+				d3.select('.resetbutton[disabled]').attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno2);
@@ -107,7 +107,7 @@ export default function(){
 			function(){
 				changeAnno(anno8);
 				drawCumulativeDots(data.coords.length)
-				d3.select('.animatebutton').attr('class','animatebutton.hidden');
+				d3.select('.animatebutton').attr('disabled','disabled');
 			}
 		]
 
@@ -116,8 +116,8 @@ export default function(){
 			function() {
 				changeAnno(anno0); 
 				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
-				d3.select('.backbutton').attr('class','backbutton hidden');
-				d3.select('.resetbutton').attr('class','resetbutton hidden');
+				d3.select('.backbutton').attr('disabled', 'disabled');
+				d3.select('.resetbutton').attr('disabled', 'disabled');
 			},
 			function() {
 				changeAnno(anno1);
@@ -296,20 +296,22 @@ export default function(){
 			.attr("class","buttonHolder")
 			.attr('y',60);
 
-		var backBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","backbutton hidden")
+    var backBtn = d3.select(".buttonHolder").append("button")
+      .attr('disabled', 'disabled')
+			.attr("class","backbutton o-buttons o-buttons--big")
 			.html("&laquo; Back");
 
 		var counter = buttonHolder.append('span')
 			.attr({"class":"slideCounter"})
 			.html((storyState+1) + "/" + (annotations.length));
 
-		var forBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","animatebutton")
+		var forBtn = d3.select(".buttonHolder").append("button")
+			.attr("class","animatebutton o-buttons o-buttons--big")
 			.html("Next &raquo;");
 
-		var resetBtn = d3.select(".buttonHolder").append("span")
-			.attr("class","resetbutton hidden")
+    var resetBtn = d3.select(".buttonHolder").append("button")
+      .attr('disabled', 'disabled')
+			.attr("class","resetbutton o-buttons o-buttons--big")
 			.html("Reset");
 
 		forBtn.on("click", function(){
