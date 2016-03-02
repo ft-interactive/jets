@@ -192,7 +192,7 @@ max-width: 620px;
 
 .story-fact-card {
   width: 380px;
-  height: 180px;
+  // height: 180px;
   background-color: white;
   display: inline-block;
   float: left;
@@ -205,23 +205,18 @@ max-width: 620px;
 
 }
 
-.fact-card-wrapper{
-  display: flex;
-  margin: 10px 10px;
 
-
-
-}
 
 .card-icon {
+  float: left;
     width: 61px;
     height: 37px;
-    padding: 5px 10px 0px 0px;
+    margin: 20px 15px 10px 15px;
    
 }
 
+
 .story-card-link{
-    margin-bottom: 20px;
     margin-right: 20px;
     float: right;
     font-family: $font-sans;
@@ -229,15 +224,21 @@ max-width: 620px;
     color: #27757b;
     border-bottom: 1px dotted #27757b;
     text-decoration: none;
+    margin-bottom: 15px;
 
 }
 
 .story-fact-words{
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 200;
-  line-height: 23px;
+  line-height: 25px;
+  float: right;
+  width: 273px;
+  padding-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .fact-words{
