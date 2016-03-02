@@ -205,11 +205,47 @@ max-width: 620px;
 
 
 .card-icon {
-  float: left;
-    width: 61px;
-    height: 37px;
-    margin: 20px 15px 10px 15px;
+ float: left;
+    //width: 61px;
+    //height: 57px;
+    margin: 20px 15px 10px 20px;
    
+}
+
+img .boomerang{
+
+  width: 37px;
+  height: 41px;
+  //margin: 20px 10px 10px 15px;
+
+}
+
+img .ralph-lauren{
+  width: 37px;
+  height: 41px;
+  //margin: 20px 10px 50px 15px;
+
+}
+
+img .helicopter{
+  width: 60px;
+  height: 35px;
+  //margin: 20px 10px 50px 15px;
+
+}
+
+img .free-label{
+  width: 39px;
+  height: 38px;
+  //margin: 20px 10px 50px 15px;
+
+}
+
+img .market-rate{
+  width: 39px;
+  height: 38px;
+  //margin: 20px 10px 50px 15px;
+
 }
 
 
@@ -232,21 +268,21 @@ max-width: 620px;
   font-weight: 200;
   line-height: 25px;
   float: right;
-  width: 273px;
+  width: 268px;
   padding-right: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .fact-words {
+
   font-family: $font-sans;
   color: oColorsGetPaletteColor('grey-tint3');
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 200;
-  line-height: 23px;
-  padding: 20px;
+  line-height: 25px;
+  padding: 20px 25px 25px 20px;
 }
-
 
 .fact-words a {
 
@@ -254,7 +290,6 @@ max-width: 620px;
    border-bottom: 1px dotted #27757b;
    text-decoration: none;
 }
-
 
 .fact-card {
    border-radius: 10px;
