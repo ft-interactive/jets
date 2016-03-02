@@ -1,14 +1,9 @@
-@import 'n-normalize/main';
 @import 'o-colors/main';
-@import 'o-share/main';
-@import "o-ft-icons/main";
-@import "o-buttons/main";
 
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
 $font-display: FinancierDisplayWeb, Georgia, serif;
-$o-share-is-silent: false;
-$o-buttons-is-silent: false;
+
 
 body {
   @include oColorsFor(page, background);
@@ -319,6 +314,10 @@ rect {
   margin-top:20px;
 }
 
+.buttonHolder > * {
+  margin-right: 5px;
+}
+
 .o-buttons__pagination{
   display: block;
   float:right;
@@ -340,95 +339,6 @@ rect {
 
 .chart-link{
   margin-bottom: 20px
-}
-
-
-.animatebutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-right:5px;
-}
-
-.animatebutton:hover{
-  background-color:#275e86;
-}
-
-.animatebutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
-}
-
-
-.slideCounter{min-width:32px;
-  text-align:center;
-  position:relative;
-  padding:5px 2px;
-  border-radius:0px;
-  color:#43423e;
-  border:0px solid #275e86;
-  transition:0.3s;
-  cursor:default;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin:0px 3px;
-}
-
-.backbutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-left:5px;
-}
-
-.backbutton:hover{
-  background-color:#275e86;
-}
-
-.backbutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
-}
-
-.resetbutton{
-  position:relative;
-  background-color:#2e6e9e;
-  padding:5px;
-  border-radius:5px;
-  color:white;
-  border:1px solid #275e86;
-  transition:0.3s;
-  cursor:pointer;
-  pointer-events:all;
-  float:left;
-  line-height:20px;
-  margin-left:5px;
-}
-
-.resetbutton:hover{
-  background-color:#275e86;
-}
-
-.resetbutton.hidden{
-  opacity:0.3;
-  pointer-events:none;
 }
 
 .circles { 
