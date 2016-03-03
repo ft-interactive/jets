@@ -278,7 +278,7 @@ img .market-rate{
   font-size: 20px;
   font-weight: 200;
   line-height: 25px;
-  padding: 20px 25px 25px 20px;
+  padding: 20px 25px 25px 87px;
 }
 
 .fact-words a {
@@ -310,17 +310,45 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
   position: relative;
 }
 
-.panel {
-  background-color: white;
+
+ .panel {
+  background-color: rgb(253, 248, 242);
   position: absolute;
   right: 50px;
-  top: 100px;
+  top: 200px;
   max-width: 315px;
+  padding: 20px;
+  box-sizing: border-box;
+ }
+
+
+
+
+
+.o-buttons--big {
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    border-width: 1px;
 }
 
-.annotations {
+.slideCounter{
+  margin-left: 10px;
+  color: oColorsGetPaletteColor('grey-tint4');
+}
+
+.slideCounter-number{
+  font-weight: 600;
+  color: oColorsGetPaletteColor('grey-tint5');
+}
+
+.annotation {
+  color: oColorsGetPaletteColor('grey-tint4');
   display: block;
   clear: both;
+  padding: 15px 10px 10px 0px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 22px;
 }
 
 rect {
@@ -491,4 +519,7 @@ article{
 
 }
 
+.faux-inline-block {
+    display: inline-block;
+}
 
