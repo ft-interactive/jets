@@ -369,7 +369,7 @@ export default function(){
 	            'class': 'yAxis',
 	            'transform': 'translate('+margin.left+',0)'
 	        })
-	        .call(yAxis.ticks(10))
+	        .call(yAxis)
 
 	    var plot = svg.append('g')
             .attr({ 
@@ -398,9 +398,9 @@ export default function(){
 			.attr({
 				'class':'secLine',
 				'x':0,
-				'y':function(){ return yScale(25000)},
+				'y':function(){ return yScale(0.025)},
 				'width':plotWidth,
-				'height':function(){ return plotHeight-yScale(25000)},
+				'height':function(){ return plotHeight-yScale(0.025)},
 			})
 	// Darw line for curvature
 		let line = d3.svg.line()
