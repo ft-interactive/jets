@@ -245,6 +245,13 @@ img .market-rate{
 
 }
 
+img .commercial-plane{
+  width: 39px;
+  height: 38px;
+  //margin: 20px 10px 50px 15px;
+
+}
+
 
 .story-card-link {
     margin-right: 20px;
@@ -312,7 +319,7 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
 
 
  .panel {
-  background-color: rgb(253, 248, 242);
+  background-color: rgba(253, 248, 242, 0.92);
   position: absolute;
   right: 50px;
   top: 200px;
