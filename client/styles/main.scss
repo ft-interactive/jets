@@ -40,7 +40,8 @@ body {
 }
 
 .share-links {  
-  margin-left: 10px;
+  //margin-left: 10px;
+      cursor: pointer;
   > p { @include visually-hidden; }
 
   > ul {
@@ -181,6 +182,7 @@ text {
 }
 
 .fact-card-section {
+border-top: hidden;
 max-width: 620px;
 }
 
@@ -191,7 +193,7 @@ max-width: 620px;
   display: inline-block;
   float: left;
   //margin-left: 50px;
-  margin-right: 10px;
+  margin:10px 10px 10px 0px;
   border-radius: 10px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
   -moz-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
@@ -410,7 +412,12 @@ rect {
   content:"1 of 9"
 }
 
+p .page-links{
+  margin-top: 60px;
+}
+
 .page-links {
+  //margin-top: 20px;
   font-family: $font-sans;
   font-size: 20px; 
     color: #27757b;
@@ -486,6 +493,7 @@ section{
 
 .download-csv{
   padding-right: 10px;
+  cursor:pointer;
 }
 
 section h3 {
@@ -510,12 +518,19 @@ section li {
 
 .link-container{
   display: flex;
-  flex-direction:row;
+  flex-direction:column;
   justify-content:center;
   max-width: 320px;
   text-align: center;
   margin: 0 auto 20px;
 }
+
+.social-link-container{
+ 
+
+}
+
+
 
 article{
   margin:0 auto;
@@ -525,7 +540,9 @@ article{
 }
 
 .credits{
-
+    margin: 0 auto;
+    //padding-bottom: 20px;
+    max-width: 620px;
  font-family: $font-sans;
  font-size: 15px;
  color:oColorsGetPaletteColor('pink-tint3');
