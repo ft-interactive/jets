@@ -26,15 +26,15 @@ export default function(){
 		let plotHeight = height - (margin.top + margin.bottom);
 
 // Annotation texts
-		let anno0 = 'We ranked each of the S&P 500 companies according to how much they gave their executives in free personal flights on the corporate airplane'
+		let anno0 = 'We ranked each of the S&P 500 companies according to how much they spent giving free personal flights on the company plane to their executives'
 		let anno1 = 'This dot represents Freeport McRoran, the mining company that spent $1.2m, the most in 2014'
-		let anno2 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for its chairman and chief executive, James Gorman'
-		let anno3 = 'Kansas City Southern\'s dot is just above the $25,000 SEC minimum for disclosure. Companies do not have to disclose the value of perquisites worth less than that'
-		let anno4 = 'We found 173 companies with discloseable jet perks. If you include all the companies, this chart would look like this instead'
-		let anno5 = 'The chart\'s curvature indicates that a handful of companies were a lot more generous with free flights than the others'
-		let anno6 = 'This becomes a lot more apparent if we show the cumulative value instead. The top 10 companies accounted for a quarter of all spending in 2014'
-		let anno7 = 'The top 50 companies &mdash; or the top ten percent &mdash; accounted for two-thirds of all corporate '
-		let anno8 = ''
+		let anno2 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for James Gorman, its chairman and chief executive'
+		let anno3 = 'Kansas City Southern\'s dot is just above the SEC\'s disclosure minimum. Companies do not have to report the value of perquisites worth less than $25,000 a year'
+		let anno4 = '173 companies disclosed jet perks in 2014. If you include all the 465 companies we looked at in the S&P 500, the chart would look like this instead'
+		let anno5 = 'S&P 500 companies spent $39.5m in total in 2014. But a handful were a lot more generous with free flights than the others'
+		let anno6 = 'The top 10 companies — or the top 2 per cent — accounted for a quarter of all spending in 2014. Many of these are companies where the founder or their family still exert control'
+		let anno7 = 'The top 50 companies — or the top 11 per cent — accounted for two-thirds of the total'
+		let anno8 = 'Corporate governance experts say high personal jet spending is a sign of a weak board and too powerful executives, and could be a harbinger of other problems'
 
 		let annotations = [anno0, anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8];
 
@@ -70,7 +70,7 @@ export default function(){
 			},
 			function(){
 				changeAnno(anno5);
-				drawCurvLine();
+
 			},
 			function(){
 				changeAnno(anno6);
@@ -211,6 +211,22 @@ export default function(){
 				.call(yAxis);
 		}
 
+		function moveDotsUp() {
+			plot.selectAll('circle')
+			.data(data.coords)
+		        .enter()
+		        .append('circle')
+		        .attr({
+		            'class':'circles',
+		            'cx': function(d) { return xScale(d[0]) },
+		            'cy': function(d) { return yScale(d[1]) },
+		            'r': circleSize,
+		            'id': function(d) { return d[2] },
+		            'fill': 'purple',
+		            'opacity': '0.9'
+		        });
+		}
+
 		//function for incrementally drawing the curvature line line
 
 		function pathTween() {
@@ -259,20 +275,8 @@ export default function(){
 		    .scale(yScale)
 		    .orient('left')
 		    .tickSize(-plotWidth, 0)
-	    
-	    //set up document structure
 
-	    parent.append('span')
-			.attr('y',20)
-			.attr('class','chart-title')
-			.html(title);
-	    
-	    parent.append('span')
-			.attr('y',40)
-			.attr('class','chart-subtitle')
-			.html(subtitle);
-
-		changeAnno(anno0);
+		//navigational buttons
 
 		var slideCount = d3.select('#currentSlide')
 			.html(storyState+1);
@@ -289,6 +293,18 @@ export default function(){
 			.on("click",function(){
 				swipeBack();
 		});
+	    
+	    //set up document structure
+
+	    parent.append('span')
+			.attr('y',20)
+			.attr('class','chart-title')
+			.html(title);
+	    
+	    parent.append('span')
+			.attr('y',40)
+			.attr('class','chart-subtitle')
+			.html(subtitle);
 
 	    var svg = parent
 	        .append('svg')
@@ -305,6 +321,12 @@ export default function(){
 	            'class':'chart-source'
 	        })
 	        .html(source);
+
+		svg.append('g')
+			.attr({
+				'class': 'dot-holder',
+                'transform':'translate('+ margin.left +',20)' 
+			})
 
 	    svg.append('text')
 	        .attr({
@@ -402,7 +424,7 @@ export default function(){
 				'width':plotWidth,
 				'height':function(){ return plotHeight-yScale(0.025)},
 			})
-	// Darw line for curvature
+	// Draw line for curvature
 		let line = d3.svg.line()
 			.x(function(d) { return xScale(d.x)})
 		    .y(function(d) { return yScale(d.y)});
@@ -420,6 +442,8 @@ export default function(){
 				.duration(2000)
 				.attrTween('d', pathTween)
 			}
+		//Set annotation to initial annotation
+		changeAnno(anno0);
 	}
 
 	chart.title = function(string){
