@@ -19,10 +19,10 @@ function dataLoaded(error, data) {
     	.subtitle('$m, 2014')
     	.source('Source: Securities and Exchanges Commission')
     	.circleSize(2)
-    	.height(600)
+    	.height(500)
     	.width(rect.width)
     	.margin({
-		    top:30,
+		    top:50,
 		    left:50,
 		    bottom:50,
 		    right:30
