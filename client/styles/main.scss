@@ -563,6 +563,23 @@ article h3{
 .chart-xaxis-label {
   font-size: 16px;
 }
+
+.chart-xaxis-label-middle {
+  font-size: 17px;
+  font-weight: 600;
+  fill: oColorsGetPaletteColor('grey-tint4');
+}
+
+.chart-xaxis-label-left, .chart-xaxis-label-right {
+  font-size: 17px;
+  font-weight: 400;
+  fill: oColorsGetPaletteColor('grey-tint4');  
+}
+
+.chart-xaxis-label-right-arrow, .chart-xaxis-label-left-arrow {
+    font-size: 12px;
+}
+
 section{
   border-top: 1px solid oColorsGetPaletteColor('pink-tint3');
   margin: 20px auto;
@@ -694,7 +711,7 @@ article{
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 800px) {
   .panel {
     float: right;
     //display: none;
@@ -714,6 +731,7 @@ article{
   font-size: 16px;
   font-weight: 200;
   line-height: 20px;
+  max-width: 300px;
 
   }
 
@@ -729,7 +747,16 @@ article{
   margin-right: 10px;
   }
 
+  .chart-xaxis-label-middle, .chart-xaxis-label-left, .chart-xaxis-label-right {
+    font-size: 15px;
+  }
+
+  .chart-xaxis-label-right-arrow, .chart-xaxis-label-left-arrow {
+    font-size: 12px;
+  }
+
 }
+
 
 
 

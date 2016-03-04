@@ -221,7 +221,7 @@ export default function(){
 		// if not mobile size i.e. viewportW > 800
 
 		if (viewportW > 800) {
-			height = 500
+			height = 500;
 			d3.select('.annotation').style('display','block');
 			d3.select('.mobile-annotations').style('display','none')
 			d3.select('.slideCounter').remove()
@@ -245,7 +245,8 @@ export default function(){
 				'right':'5%'
 
 			})
-		}
+	       }
+
 		let plotHeight = height - (margin.top + margin.bottom);		
 
 console.log(viewportW)
@@ -401,11 +402,11 @@ console.log(svg)
 	            'class':'chart-source'
 	        })
 	        .html(source);
-
+//rank by spending
 	    d3.select('svg').append('text')
 	        .attr({
 	            'y':function(){
-	                return height-15;
+	                return height-20;
 	            },
 	            'x':function(){
 	            	return width/2;
@@ -414,7 +415,7 @@ console.log(svg)
 	            'text-anchor':'middle'
 	        })
 	        .text('Rank by spending');
-
+//more generous
 	    svg.append('text')
 	        .attr({
 	            'y':function(){
@@ -423,12 +424,61 @@ console.log(svg)
 	            'x':function(){
 	            	return margin.left;
 	            },
-	            'class':'chart-xaxis-label',
+	            'class':'chart-xaxis-label-left-arrow',
 	            'text-anchor':'start'
 	        })
-	        .text('something')
+	        .text('◀︎ ')
+	    	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-25;
+	            },
+	            'x':function(){
+	            	return margin.left+15;
+	            },
+	            'class':'chart-xaxis-label-left',
+	            'text-anchor':'start'
+	        })
+	        .text('More')
 
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-10;
+	            },
+	            'x':function(){
+	            	return margin.left+15;
+	            },
+	            'class':'chart-xaxis-label-left',
+	            'text-anchor':'start'
+	        })
+	        .text('generous')
 
+//less generous
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-25;
+	            },
+	            'x':function(){
+	            	return margin.left + plotWidth - 15;
+	            },
+	            'class':'chart-xaxis-label-right',
+	            'text-anchor':'end'
+	        })
+	        .text('Less');
+	    svg.append('text')
+	        .attr({
+	            'y':function(){
+	                return height-10;
+	            },
+	            'x':function(){
+	            	return margin.left + plotWidth -15;
+	            },
+	            'class':'chart-xaxis-label-right',
+	            'text-anchor':'end'
+	        })
+	        .text('generous');
 	    svg.append('text')
 	        .attr({
 	            'y':function(){
@@ -437,11 +487,26 @@ console.log(svg)
 	            'x':function(){
 	            	return margin.left + plotWidth;
 	            },
-	            'class':'chart-xaxis-label',
+	            'class':'chart-xaxis-label-right-arrow',
 	            'text-anchor':'end'
 	        })
-	        .text('Less generous ►');			
+	        .text('►');		
 
+//if desktop
+	if (viewportW > 800) {
+			d3.selectAll('.chart-xaxis-label-left')
+	        .attr({
+	            'x':function(){
+	            	return margin.left+20;
+	            }
+	        });
+			d3.selectAll('.chart-xaxis-label-right')
+	        .attr({
+	            'x':function(){
+	            	return margin.left + plotWidth -25;
+	            }
+	        })
+	}
 	    //axes
 
 	    var axes = svg.append('g')
