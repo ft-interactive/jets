@@ -9,10 +9,10 @@ const circleDataLocation = '../data/expediaCleaned.csv';
 function dataLoaded(error, data) {
     let div = document.getElementById('scatter');
     let rect = div.getBoundingClientRect();
+    let viewportW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
 
 	let processedData = dataProcessor(data);
     let jetSpendingScatter = scatterPlot();
-
 
     jetSpendingScatter
     	.data(processedData)
@@ -22,6 +22,7 @@ function dataLoaded(error, data) {
     	.circleSize(2)
     	.height(300)
     	.width(rect.width)
+        .viewportW(viewportW)
     	.margin({
 		    top:50,
 		    left:25,
@@ -35,6 +36,7 @@ function dataLoaded(error, data) {
 }
 
 function drawCircleTimeline(error, data) {
+
 
     let circleData = data;
     let drawCTL = circleTimeline();
