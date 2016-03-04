@@ -24,7 +24,7 @@ export default function(){
 	function chart(parent){
 
 		let plotWidth = width - (margin.left + margin.right);
-		let plotHeight = height - (margin.top + margin.bottom);
+
 
 // Annotation texts
 		let anno0 = 'We ranked each of the S&P 500 companies according to how much they spent giving free personal flights on the company plane to their executives'
@@ -159,6 +159,7 @@ export default function(){
 		// if not mobile size i.e. viewportW > 800
 
 		if (viewportW > 800) {
+			height = 500
 			d3.select('.annotation').style('display','block');
 			d3.select('.mobile-annotations').style('display','none')
 			d3.select('.slideCounter').remove()
@@ -182,7 +183,7 @@ export default function(){
 
 			})
 		}
-		
+		let plotHeight = height - (margin.top + margin.bottom);		
 
 console.log(viewportW)
 	//functions used to step through the viz
