@@ -49,6 +49,7 @@ export default function(){
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
 				d3.select('#backButton[disabled]').attr('disabled', null);
+
 			},
 			function(){
 				changeAnno(anno2);
@@ -70,6 +71,12 @@ export default function(){
 			},
 			function(){
 				changeAnno(anno5);
+				d3.selectAll('circle').transition()
+		        	.attr({
+		            'cx': function(d) { return dotxScale(d[4]) },
+		            'cy': function(d) { return d[5]*5 },
+
+		        });
 
 			},
 			function(){
@@ -155,6 +162,23 @@ export default function(){
 
 		console.log(data.coords[10])
 
+		let dotSize = 4
+		let dotsInRow = Math.floor( plotWidth / dotSize)
+
+		let dotPos  = data.coords.map(function(d,i){
+						return {
+							dotRowX: (i % dotsInRow),
+							dotRowY: Math.floor( i/dotsInRow )
+						}
+					});
+
+
+
+		data.coords.forEach(function (d,i) {
+	  		d.push(dotPos[i].dotRowX, dotPos[i].dotRowY);
+		});
+
+
 
 	//functions used to step through the viz
 		function swipeForward() {
@@ -218,8 +242,8 @@ export default function(){
 		        .append('circle')
 		        .attr({
 		            'class':'circles',
-		            'cx': function(d) { return xScale(d[0]) },
-		            'cy': function(d) { return yScale(d[1]) },
+		            'cx': function(d) { return d[4] },
+		            'cy': function(d) { return d[5] },
 		            'r': circleSize,
 		            'id': function(d) { return d[2] },
 		            'fill': 'purple',
@@ -265,6 +289,10 @@ export default function(){
 	    var yScale = d3.scale.linear()
 		    .domain(data.yDomain)
 		    .range([height-(margin.top+margin.bottom),0]);
+
+		var dotxScale = d3.scale.linear()
+			.domain([0,dotsInRow])
+			.range([0, width-(margin.left+margin.right)]);
    
 	    //define axes based on the scale
 	    var xAxis = d3.svg.axis()
@@ -325,7 +353,7 @@ export default function(){
 		svg.append('g')
 			.attr({
 				'class': 'dot-holder',
-                'transform':'translate('+ margin.left +',20)' 
+                'transform':'translate('+ margin.left +',20)',
 			})
 
 	    svg.append('text')
@@ -444,6 +472,11 @@ export default function(){
 			}
 		//Set annotation to initial annotation
 		changeAnno(anno0);
+
+
+
+
+
 	}
 
 	chart.title = function(string){

@@ -43,12 +43,9 @@ export default function (data) {
 	};
 
 	return processedData;
+
 }
 
 function sortFunction(a, b) {
   return a - b;
 }
-
-
-
-

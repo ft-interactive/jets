@@ -5,12 +5,12 @@ import dataProcessor from './scatter-data-processor';
 const dataLocation = '../data/jetscatter.csv';
 
 function dataLoaded(error, data) {
+    let div = document.getElementById('scatter');
+    let rect = div.getBoundingClientRect();
 
 	let processedData = dataProcessor(data);
     let jetSpendingScatter = scatterPlot();
 
-    let div = document.getElementById('scatter');
-    let rect = div.getBoundingClientRect();
 
 
     jetSpendingScatter
