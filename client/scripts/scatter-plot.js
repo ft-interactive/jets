@@ -225,19 +225,20 @@ export default function(){
 			d3.select('.annotation').style('display','block');
 			d3.select('.mobile-annotations').style('display','none')
 			d3.select('.slideCounter').remove()
-			d3.select('panel').append('span')
+			d3.select('.panel').insert('span','.annotation')
 				.attr('class','slideCounter')
-			d3.select('.slideCounter').append('span')
+			let slideCounter = d3.select('.slideCounter');
+			slideCounter.append('span')
 				.attr({
 					'class':'slideCounter-number',
 					'id':'currentSlide'
 				})
-				.append('text').text(' of ')
-				.append('span')
+			slideCounter.append('text').text(' of ')
+			slideCounter.append('span')
 				.attr({
 					'class':'slideCounter-number',
 					'id':'totalSlide'
-				})
+				});
 			d3.select('.panel').style({
 				'position':'absolute',
 				'top':'130px',
