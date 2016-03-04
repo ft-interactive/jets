@@ -122,16 +122,15 @@ export default function(){
 			},
 			function() {
 				changeAnno(anno4);
-				d3.select('.curvatureLine').remove();
+				d3.select('.secLine').style('opacity','0.3');
+				resetYScale();
+				d3.selectAll('.circles').remove();
+				drawCircles();
+				d3.select('.chart-subtitle').html('$m, 2014')
 			},
 			function() {
 				changeAnno(anno5);
-				d3.select('.curvatureLine').style('opacity','1');
-				d3.select('.secLine').style('opacity','0.3');
-				d3.selectAll('.circles').remove();
-				d3.select('.cumulativeRect').remove();
-				resetYScale();
-				drawCircles();
+
 			},
 			function() {
 				changeAnno(anno6);
