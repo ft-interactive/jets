@@ -48,24 +48,86 @@ export default function(){
 		let animations = [
 			function(){
 				changeAnno(anno1);
-				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
+				d3.selectAll('circle').style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				})
+				d3.select('#Freeport-McMoRan')
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+
 				d3.select('#backButton[disabled]').attr('disabled', null);
 
 			},
 			function(){
 				changeAnno(anno2);
-				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
-				d3.select('#Morgan_Stanley').attr('class','circles.highlight').attr('r', '5');
+				d3.select('#Freeport-McMoRan').attr('r','3.5')
+				.style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				});
+				d3.select('#Morgan_Stanley')
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+
 			},
 			function(){
 				changeAnno(anno3);
-				d3.select('#Morgan_Stanley').attr('class','circles').attr('r','2');
-				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
-				d3.select('rect.secLine').style('opacity','0.3');
+				d3.select('#Morgan_Stanley').attr('r','3.5')
+				.style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				});
+				d3.select('#Kansas_City_Southern')
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+				d3.select('.secLine').style('opacity','1');
+				plot.append('text')
+					.text('MINIMUM FOR DISCLOSURE')
+					.attr({
+						'class':'secLine-text',
+						'x':'0',
+						'y':function(){ return yScale(0.025)},
+						'dx':'2px',
+						'dy':'-5px'
+					})
 			},
 			function(){
 				changeAnno(anno4);
-				d3.select('#Kansas_City_Southern').attr('class','circles').attr('r','2');
+				d3.select('.secLine-text').style('opacity','0')
+				d3.select('#Kansas_City_Southern')
+					.attr('r','3.5')
+					.style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+					})
+
 				rescaleX(465);
 			},
 			function(){
@@ -79,21 +141,21 @@ export default function(){
 		            'cx': function(d) { return dotxScale(d[4]) },
 		            'cy': function(d) { return (d[5]*10)-40 },
 		        });
-		        d3.select('.chart-subtitle').html("% of $39.5m total spending in 2014")
+		        d3.select('.chart-subtitle').html("% of total spending in 2014")
 
 			},
 			function(){
 				changeAnno(anno6);
-				drawCumulativeDots(0,10);
+				drawCumulativeDots(0,10,75);
 			},
 			function(){
 				changeAnno(anno7);
-				drawCumulativeDots(10,50);
+				drawCumulativeDots(10,50,50);
 			},
 
 			function(){
 				changeAnno(anno8);
-				drawCumulativeDots(50,data.coords.length)
+				drawCumulativeDots(50,data.coords.length,20)
 				d3.select('#forwardButton').attr('disabled','disabled');
 			}
 		]
@@ -178,8 +240,8 @@ export default function(){
 				})
 			d3.select('.panel').style({
 				'position':'absolute',
-				'top':'50px',
-				'right':'10%'
+				'top':'130px',
+				'right':'5%'
 
 			})
 		}
@@ -246,18 +308,24 @@ console.log(viewportW)
 
         //function to incrementally draw the cumulative dots
 
-        function drawCumulativeDots(start,end) {
+        function drawCumulativeDots(start,end,speed) {
 
 			plot.selectAll('circle')
 				.filter(function (d,i){
 					return i >= start && i < end;
 				})
 		        .transition().delay(function(d, i) {
-				    return i * 50;
+				    return i * speed;
 			  	})
 	            .attr({
 	                'cx': function(d) { return xScale(d[0]) },
 	                'cy': function(d) { return yScale(d[3]) },
+	            })
+	            .style({
+	            	'fill':'#9e2f50',
+	            	'stroke':'#9e2f50',
+	            	'stroke-width':'0.5px',
+	            	'fill-opacity':'0.5'
 	            })
         }
 
@@ -415,22 +483,19 @@ console.log(svg)
 		            'cy': function(d) { return yScale(d[1]) },
 		            'r': circleSize,
 		            'id': function(d) { return d[2] },
-		            'fill': 'purple',
-		            'opacity': '0.9'
 		        });
 		    };
 		drawCircles()
 
 	// Draw shaded area showing SEC disclosure threshold
-		d3.select('g#plot').append('rect')
+		d3.select('g#plot').append('line')
 			.attr({
 				'class':'secLine',
-				'x':0,
-				'y':function(){ return yScale(0.025)},
-				'width':plotWidth,
-				'height':function(){ return plotHeight-yScale(0.025)},
+				'x1':0,
+				'y1':function(){ return yScale(0.025)},
+				'x2':plotWidth,
+				'y2':function(){ return yScale(0.025)},
 			})
-
 		//Set annotation to initial annotation
 		changeAnno(anno0);
 

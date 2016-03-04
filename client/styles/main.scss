@@ -441,9 +441,10 @@ rect {
 }
 
 .chart-source { 
-  color:oColorsGetPaletteColor('grey-tint3');
+  color: oColorsGetPaletteColor('grey-tint3');
   font-size: 14px;
-  display:block;
+  display: inline-block;
+  padding: 10px;
 
 }
 
@@ -492,17 +493,28 @@ p .page-links{
   margin-bottom: 20px
 }
 
-.circles { 
+.circles {
+  stroke: oColorsGetPaletteColor('claret');
   fill-opacity: 0.5;
-  //stroke-width: 1px;
+  stroke-width: 0.5px;
+  fill: oColorsGetPaletteColor('claret');
 }
 
 .circles.highlight {
-  fill: black;
+  fill: oColorsGetPaletteColor('claret');
+
 }
 
 .secLine {
   opacity:0;
+  stroke: oColorsGetPaletteColor('grey-tint5');
+  stroke-width: 1px;
+  stroke-dasharray: 4, 3;
+}
+
+.secLine-text {
+  font-size: 13px;
+  letter-spacing: 0.3;
 }
 
 .cumulativeRect {
@@ -529,6 +541,7 @@ article h3{
 .axes text {
   font-family: $font-sans;
   font-size: 16px;
+  font-weight: 200;
   fill: #a7a59a;
   shape-rendering: crispEdges;
 }
@@ -617,6 +630,53 @@ article{
     display: inline-block;
 }
 
+.video-player {
+  @include oGridCenter;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+​
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+​
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+​
+.video-player {
+  float: none;
+  max-width: 600px;
+  margin: 10px auto 40px;
+}
+​
+.video-container {
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+​
+.video-container embed,
+.video-container iframe,
+.video-container object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 @include oGridRespondTo($from: S, $until: M) {
 
@@ -640,13 +700,14 @@ article{
     //display: none;
     background-color: oColorsGetPaletteColor('pink');
     padding-right: 10px;
+    padding-bottom: 10px;
   }
 
   .mobile-annotations {
   color: oColorsGetPaletteColor('grey-tint4');
   position:absolute;
   left: 90px;
-  top: 130px;
+  top: 150px;
   width: 70%;
   padding: 20px;
   box-sizing: border-box;

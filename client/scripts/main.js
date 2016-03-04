@@ -20,15 +20,15 @@ function dataLoaded(error, data) {
     	.title('Spending on jet perquisites by S&P 500 comapanies')
     	.subtitle('$m, 2014')
     	.source('Source: Securities and Exchanges Commission')
-    	.circleSize(2)
-    	.height(300)
+    	.circleSize(3.5)
+    	.height(400)
     	.width(rect.width)
         .viewportW(viewportW)
     	.margin({
 		    top:50,
 		    left:25,
 		    bottom:50,
-		    right:10
+		    right:15
 		});
 
 	d3.select('#scatter')
