@@ -330,7 +330,8 @@ export default function(){
 	            'class':'chart-xaxis-label',
 	            'text-anchor':'start'
 	        })
-	        .text('◄ More generous');	
+	        .text('sometihng')
+
 
 	    svg.append('text')
 	        .attr({

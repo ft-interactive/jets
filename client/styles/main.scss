@@ -494,7 +494,7 @@ p .page-links{
 
 .axes path, .axes line {
   fill: none;
-  stroke: #777;
+  stroke: #a7a59a;
   shape-rendering: crispEdges;
 }
 
@@ -511,13 +511,28 @@ article h3{
 
 .axes text {
   font-family: $font-sans;
-  font-size: 11px;
+  font-size: 16px;
+  fill: #a7a59a;
+  shape-rendering: crispEdges;
 }
 
-#yAxis text {
-  text-anchor:end;
+.yAxis text {
+  text-anchor: end;
+
 }
 
+.yAxis line {
+  stroke-dasharray: 1 , 4;
+  stroke: #a7a59a;
+}
+
+.yAxis path {
+  display: none;
+}
+
+.chart-xaxis-label {
+  font-size: 16px;
+}
 section{
   border-top: 1px solid oColorsGetPaletteColor('pink-tint3');
   margin: 20px auto;
