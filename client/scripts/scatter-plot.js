@@ -60,9 +60,7 @@ export default function(){
 				changeAnno(anno3);
 				d3.select('#Morgan_Stanley').attr('class','circles').attr('r','2');
 				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
-				setTimeout(function(){
-					d3.select('rect.secLine').style('opacity','0.3');
-				},500)
+				d3.select('rect.secLine').style('opacity','0.3');
 			},
 			function(){
 				changeAnno(anno4);
@@ -71,48 +69,30 @@ export default function(){
 			},
 			function(){
 				changeAnno(anno5);
-				d3.selectAll('circle').transition()
+				d3.select('.secLine').style('opacity','0');
+				rescaleY();
+				d3.selectAll('circle').transition().delay(function(d, i) {
+				    return i * 10;
+			  	})
 		        	.attr({
 		            'cx': function(d) { return dotxScale(d[4]) },
-		            'cy': function(d) { return d[5]*5 },
-
+		            'cy': function(d) { return (d[5]*10)-40 },
 		        });
+		        d3.select('.chart-subtitle').html("% of $39.5m total spending in 2014")
 
 			},
 			function(){
 				changeAnno(anno6);
-				rescaleY();
-				d3.select('.curvatureLine').style('opacity','0');
-				d3.select('.secLine').style('opacity','0');
-				d3.selectAll('.circles').remove();
-				drawCumulativeDots(10);
-				plot.append('rect')
-					.attr({
-						'class':'cumulativeRect',
-						'x':0,
-						'y':function(){ return yScale(data.coords[9][3])},
-						'width':function(){ return xScale(data.coords[9][0])},
-						'height':function(){ return plotHeight-yScale(data.coords[9][3])},
-				})
-
+				drawCumulativeDots(0,10);
 			},
 			function(){
 				changeAnno(anno7);
-				drawCumulativeDots(50);
-				d3.select('.cumulativeRect')
-					.attr({
-						'class':'cumulativeRect',
-						'x':0,
-						'y':function(){ return yScale(data.coords[49][3])},
-						'width':function(){ return xScale(data.coords[49][0])},
-						'height':function(){ return plotHeight-yScale(data.coords[49][3])},
-
-					})
+				drawCumulativeDots(10,50);
 			},
 
 			function(){
 				changeAnno(anno8);
-				drawCumulativeDots(data.coords.length)
+				drawCumulativeDots(50,data.coords.length)
 				d3.select('#forwardButton').attr('disabled','disabled');
 			}
 		]
@@ -235,50 +215,21 @@ export default function(){
 				.call(yAxis);
 		}
 
-		function moveDotsUp() {
-			plot.selectAll('circle')
-			.data(data.coords)
-		        .enter()
-		        .append('circle')
-		        .attr({
-		            'class':'circles',
-		            'cx': function(d) { return d[4] },
-		            'cy': function(d) { return d[5] },
-		            'r': circleSize,
-		            'id': function(d) { return d[2] },
-		            'fill': 'purple',
-		            'opacity': '0.9'
-		        });
-		}
-
-		//function for incrementally drawing the curvature line line
-
-		function pathTween() {
-			var interpolate = d3.scale.quantile()
-									.domain([0,1])
-            						.range(d3.range(1, data.curvLine.length + 1));
-    		return function(t) {
-        		return line(data.curvLine.slice(0, interpolate(t)));
-        	}
-        };
-
         //function to incrementally draw the cumulative dots
 
-        function drawCumulativeDots(end) {
+        function drawCumulativeDots(start,end) {
 
 			plot.selectAll('circle')
-				.data(data.coords.slice(0,end))
-		        .enter()
-		        .append('circle')
-		            .attr({
-		                'class':'circles',
-		                'cx': function(d) { return xScale(d[0]) },
-		                'cy': function(d) { return yScale(d[3]) },
-		                'r': circleSize,
-		                'id': function(d) { return d[2] },
-		                'fill': '#F00'
-		            })
-
+				.filter(function (d,i){
+					return i >= start && i < end;
+				})
+		        .transition().delay(function(d, i) {
+				    return i * 50;
+			  	})
+	            .attr({
+	                'cx': function(d) { return xScale(d[0]) },
+	                'cy': function(d) { return yScale(d[3]) },
+	            })
         }
 
 	    //set up the scale we will use for plotting our scatter plot
@@ -452,30 +403,9 @@ export default function(){
 				'width':plotWidth,
 				'height':function(){ return plotHeight-yScale(0.025)},
 			})
-	// Draw line for curvature
-		let line = d3.svg.line()
-			.x(function(d) { return xScale(d.x)})
-		    .y(function(d) { return yScale(d.y)});
 
-		let drawCurvLine = function(){
-				d3.select('g#plot').append('path')
-				.attr({
-					'd': line(data.curvLine),
-					'class':'curvatureLine',
-					'stroke': 'blue',
-					'stroke-width': '2',
-					'fill':'none'
-				})
-				.transition()
-				.duration(2000)
-				.attrTween('d', pathTween)
-			}
 		//Set annotation to initial annotation
 		changeAnno(anno0);
-
-
-
-
 
 	}
 
