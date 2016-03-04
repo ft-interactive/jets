@@ -598,9 +598,6 @@ section li {
   margin: 0 auto 20px;
 }
 
-
-
-
 article{
   margin:0 auto;
   padding-bottom: 20px;
@@ -622,7 +619,7 @@ article{
     display: inline-block;
 }
 
-@include oGridRespondTo(M S) {
+@include oGridRespondTo(M) {
   .table__container {
     min-width: 620px;
   }
@@ -632,8 +629,5 @@ article{
      padding-right: 20px;
       border-right: 1px solid oColorsGetPaletteColor('pink-tint2');
     }
-  .mobile-annotations{
-    background-color: red;
-  }
   }
 }
