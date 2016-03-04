@@ -217,6 +217,7 @@ max-width: 620px;
 .table {
   &.table__people {
     padding-left: 10px;
+    margin-bottom: 30px;
   }
   > h3 {
     font-weight: 500;
@@ -344,6 +345,12 @@ img .commercial-plane{
   font-weight: 200;
   line-height: 25px;
   padding: 20px 25px 25px 87px;
+}
+
+.figure-highlight{
+  color: oColorsGetPaletteColor('claret');
+  font-weight: 500;
+
 }
 
 .fact-words a {
@@ -752,13 +759,21 @@ article{
   }
 
   .chart-xaxis-label-right-arrow, .chart-xaxis-label-left-arrow {
-    font-size: 12px;
-
-  .table.table__people {
-    padding-left: 0;
-    margin-bottom: 30px;
-
+  font-size: 12px;
   }
+
+  .github-link {
+    margin: 10px 0px 30px 80px;
+}
+
+.link-container p {
+  margin:10px;
+}
+
+.page-links{
+      font-size: 18px;
+}
+
 
 }
 
