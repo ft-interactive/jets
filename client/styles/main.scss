@@ -176,6 +176,10 @@ p {
 
 }
 
+.video-wrapper{
+  margin: 25px 0px;
+}
+
 text {
   font-family: $font-sans;
 }
@@ -195,13 +199,13 @@ max-width: 620px;
   position: relative;
   overflow:hidden; 
   _overflow:visible; zoom:1;
-  width: 380px;
+  width: 360px;
   // height: 180px;
   background-color: white;
   display: inline-block;
   float: left;
   //margin-left: 50px;
-  margin: 10px 20px 10px -150px;
+  margin: 10px 20px 10px -140px;
   border-radius: 10px;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
   -moz-box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
@@ -218,6 +222,7 @@ max-width: 620px;
     font-weight: 600;
     border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
     padding-bottom: 4px;
+    margin-top: 0px;
   }
   > table {
     width: 100%;
@@ -225,7 +230,7 @@ max-width: 620px;
       font-weight: 600;
     }
     > tbody > tr > td {
-      padding: 4px 0;
+      padding: 8px 0;
       border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
     }
     > tbody > tr > td:nth-child(2) {
@@ -313,7 +318,7 @@ img .commercial-plane{
   font-weight: 200;
   line-height: 25px;
   float: right;
-  width: 268px;
+  width: 240px;
   padding-right: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -354,7 +359,7 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
 .viz {
   border-top: 1px solid oColorsGetPaletteColor('pink-tint2');
   border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
-  margin: 0 auto;
+  margin: 15px auto;
   position: relative;
 }
 
@@ -425,7 +430,7 @@ rect {
 }
 
 .chart-source { 
-  color:oColorsGetPaletteColor('grey-tint2');
+  color:oColorsGetPaletteColor('grey-tint3');
   font-size: 14px;
   display:block;
 
@@ -458,7 +463,8 @@ p .page-links{
 .page-links {
   //margin-top: 20px;
   font-family: $font-sans;
-  font-size: 20px; 
+  font-size: 21px; 
+  font-weight: 200;
     color: #27757b;
     border-bottom: 1px dotted #27757b;
     text-decoration: none;
@@ -564,16 +570,11 @@ section li {
   margin: 0 auto 20px;
 }
 
-.social-link-container{
- 
-
-}
 
 
 
 article{
   margin:0 auto;
- 
   padding-bottom: 20px;
   max-width:620px;
 }
