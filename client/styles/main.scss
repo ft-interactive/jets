@@ -1,4 +1,7 @@
+$o-grid-is-silent:  false;
 @import 'o-colors/main';
+@import 'o-grid/main';
+
 
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
@@ -13,7 +16,9 @@ body {
   font-family: $font-sans;
 }
 
-
+main {
+  margin: 0 10px;
+}
 .site-header {
   padding: 18px 0 14px;
   text-align: center;
@@ -205,6 +210,29 @@ max-width: 620px;
 }
 
 
+.table {
+  &.table__people {
+    padding-left: 10px;
+  }
+  > h3 {
+    font-weight: 600;
+    border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
+    padding-bottom: 4px;
+  }
+  > table {
+    width: 100%;
+    > thead > th {
+      font-weight: 600;
+    }
+    > tbody > tr > td {
+      padding: 4px 0;
+      border-bottom: 1px solid oColorsGetPaletteColor('pink-tint2');
+    }
+    > tbody > tr > td:nth-child(2) {
+      text-align: right;
+    }
+  }
+}
 
 .card-icon {
  float: left;
@@ -565,3 +593,13 @@ article{
     display: inline-block;
 }
 
+@include oGridRespondTo(M) {
+  .table__container {
+    min-width: 620px;
+  }
+  .table {
+    &.table__people {
+      padding-left: 0;
+    }
+  }
+}
