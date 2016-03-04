@@ -357,7 +357,7 @@ console.log(svg)
 	            'class':'chart-xaxis-label',
 	            'text-anchor':'start'
 	        })
-	        .text('sometihng')
+	        .text('something')
 
 
 	    svg.append('text')
