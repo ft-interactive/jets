@@ -376,17 +376,19 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
 
  .panel {
   background-color: rgba(253, 248, 242, 0.92);
-  position: absolute;
-  right: 50px;
-  top: 200px;
   max-width: 315px;
   padding: 20px;
   box-sizing: border-box;
  }
 
-
-
-
+.mobile-annotations {
+  background-color: rgba(253, 248, 242, 0.92);
+  position:absolute;
+  right: 50px;
+  top: 200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
 .o-buttons--big {
     padding: 10px 20px 10px 20px;
@@ -406,12 +408,13 @@ box-shadow: 0px 1px 1px 0px rgba(206,198,185,1);
 
 .annotation {
   color: oColorsGetPaletteColor('grey-tint4');
-  display: block;
+
   clear: both;
   padding: 15px 10px 10px 0px;
   font-size: 18px;
   font-weight: 200;
   line-height: 25px;
+  display:none;
 }
 
 rect {
@@ -619,7 +622,7 @@ article{
     display: inline-block;
 }
 
-@include oGridRespondTo(M) {
+@include oGridRespondTo(M S) {
   .table__container {
     min-width: 620px;
   }
@@ -629,5 +632,8 @@ article{
      padding-right: 20px;
       border-right: 1px solid oColorsGetPaletteColor('pink-tint2');
     }
+  .mobile-annotations{
+    background-color: red;
+  }
   }
 }

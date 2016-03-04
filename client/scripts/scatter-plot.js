@@ -9,6 +9,7 @@ export default function(){
 	let source = 'Source';
 	let data = [];
 	let circleSize = 2;
+	let viewportW = undefined;
 
 //general layout information
 	let margin = {
@@ -139,7 +140,7 @@ export default function(){
 			function() {changeAnno(anno8)},
 		]
 
-		console.log(data.coords[10])
+		//new coords for slides 7-9
 
 		let dotSize = 4
 		let dotsInRow = Math.floor( plotWidth / dotSize)
@@ -151,14 +152,39 @@ export default function(){
 						}
 					});
 
-
-
 		data.coords.forEach(function (d,i) {
 	  		d.push(dotPos[i].dotRowX, dotPos[i].dotRowY);
 		});
 
+		// if not mobile size i.e. viewportW > 800
 
+		if (viewportW > 800) {
+			d3.select('.annotation').style('display','block');
+			d3.select('.mobile-annotations').style('display','none')
+			d3.select('.slideCounter').remove()
+			d3.select('panel').append('span')
+				.attr('class','slideCounter')
+			d3.select('.slideCounter').append('span')
+				.attr({
+					'class':'slideCounter-number',
+					'id':'currentSlide'
+				})
+				.append('text').text(' of ')
+				.append('span')
+				.attr({
+					'class':'slideCounter-number',
+					'id':'totalSlide'
+				})
+			d3.select('.panel').style({
+				'position':'absolute',
+				'top':'50px',
+				'right':'10%'
 
+			})
+		}
+		
+
+console.log(viewportW)
 	//functions used to step through the viz
 		function swipeForward() {
 			if (storyState < 0) {
@@ -189,7 +215,10 @@ export default function(){
 
 		function changeAnno (newAnno) {
 			d3.select(".annotation")
-			  .html(newAnno)
+			  .html(newAnno);
+			d3.select(".mobile-annotations")
+				.html(newAnno);
+
 		}
 
 		function rescaleX(newDomainMax) {
@@ -274,23 +303,26 @@ export default function(){
 	    
 	    //set up document structure
 
-	    parent.append('span')
+	    parent.insert('span',':first-child')
 			.attr('y',20)
 			.attr('class','chart-title')
 			.html(title);
 	    
-	    parent.append('span')
+	    parent.insert('span',':nth-child(2)')
 			.attr('y',40)
 			.attr('class','chart-subtitle')
 			.html(subtitle);
 
-	    var svg = parent
-	        .append('svg')
-	            .attr({
-	                'width': width,
-	                'height': height
-	            });
+console.log(viewportW < 800)
 
+
+		var svg = d3.select('.chart-holder').append('svg')
+        .attr({
+            'width': width,
+            'height': height
+        });
+
+console.log(svg)
 	    parent.append('span')
 	        .attr({
 	            'y':function(){
@@ -300,13 +332,7 @@ export default function(){
 	        })
 	        .html(source);
 
-		svg.append('g')
-			.attr({
-				'class': 'dot-holder',
-                'transform':'translate('+ margin.left +',20)',
-			})
-
-	    svg.append('text')
+	    d3.select('svg').append('text')
 	        .attr({
 	            'y':function(){
 	                return height-15;
@@ -407,6 +433,7 @@ export default function(){
 		//Set annotation to initial annotation
 		changeAnno(anno0);
 
+
 	}
 
 	chart.title = function(string){
@@ -441,6 +468,11 @@ export default function(){
 
 	chart.width = function(x){
 		width = x;
+		return chart;
+	}
+
+	chart.viewportW = function(x){
+		viewportW = x;
 		return chart;
 	}
 
