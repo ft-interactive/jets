@@ -510,8 +510,6 @@ p .page-links{
 
 }
 
-
-
 .chart-link{
   margin-bottom: 20px
 }
@@ -749,7 +747,7 @@ article{
   .mobile-annotations {
   color: oColorsGetPaletteColor('grey-tint4');
   position:absolute;
-  left: 90px;
+  left: 30%;
   top: 150px;
   width: 70%;
   padding: 20px;
@@ -780,49 +778,48 @@ article{
   .chart-xaxis-label-right-arrow, .chart-xaxis-label-left-arrow {
 
   font-size: 12px;
-}
+  }
 
   .github-link {
     margin: 10px 0px 30px 80px;
-}
+  }
 
-.link-container p {
-  margin:10px;
-}
+  .link-container p {
+    margin:10px;
+    }
 
-.page-links{
-      font-size: 20px;
-}
+  .page-links{
+        font-size: 20px;
+    }
 
-.back-button{
-  display: block;
-  border-color: #fff1e0;
-  background:#fff1e0;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  padding-left:10px;
-  font-size: 25px;
-}
-
-.back-button:visited{
-   border-color: #fff1e0;
+  .back-button{
+    display: block;
+    border-color: #fff1e0;
     background:#fff1e0;
-}
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding-left:10px;
+    font-size: 25px;
+  }
 
-.masthead{
-  height:15px;
-}
+  .back-button:visited{
+     border-color: #fff1e0;
+      background:#fff1e0;
+  }
 
+  .masthead{
+    height:15px;
+  }
 
-.sortable-table-container {
-  display:none;
-}
+  .sortable-table-container {
+    display:none;
+  }
 
-.download-csv {
-    padding-right: 10px;
-    padding-top: 13px;
-  
+  .download-csv {
+      padding-right: 10px;
+      padding-top: 13px;
+    
   }
 
 }
