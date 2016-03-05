@@ -617,6 +617,9 @@ section{
 }
 
 .download-csv{
+   padding-top: 13px;
+  width:68px;
+  height:87px;
   padding-right: 10px;
   cursor:pointer;
 }
@@ -811,9 +814,16 @@ article{
   height:15px;
 }
 
+
 .sortable-table-container {
   display:none;
 }
+
+.download-csv {
+    padding-right: 10px;
+    padding-top: 13px;
+  
+  }
 
 }
 
