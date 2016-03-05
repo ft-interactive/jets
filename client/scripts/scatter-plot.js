@@ -85,7 +85,6 @@ export default function(){
 						'opacity':'1',
 						'stroke-width':'12px'
 					});
-
 			},
 			function(){
 				changeAnno(anno3);
@@ -164,41 +163,99 @@ export default function(){
 			function() {},
 			function() {
 				changeAnno(anno0); 
-				d3.select('#Freeport-McMoRan').attr('class','circles').attr('r','2');
+				d3.selectAll('circle').style({
+					'fill':'#9e2f50',
+					'fill-opacity':'0.5',
+					'stroke':'#9e2f50',
+					'stroke-width': '0.5px'
+				})
+				d3.select('#Freeport-McMoRan').attr('r','3.5')
 				d3.select('#backButton').attr('disabled', 'disabled');
 			},
 			function() {
 				changeAnno(anno1);
-				d3.select('#Freeport-McMoRan').attr('class','circles.highlight').attr('r','5');
-				d3.select('#Morgan_Stanley').attr('class','circles').attr('r', '2');
+				d3.select('#Freeport-McMoRan')
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+				d3.select('#Morgan_Stanley').attr('r','3.5')
+				.style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				});
 			},
 			function() {
 				changeAnno(anno2)
-				d3.select('#Morgan_Stanley').attr('class','circles.highlight').attr('r','5');
-				d3.select('#Kansas_City_Southern').attr('class','circles').attr('r','2');
-				d3.select('rect.secLine').style('opacity','0');
+				d3.select('#Morgan_Stanley')
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+				d3.select('#Kansas_City_Southern').attr('r','3.5')
+				.style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				});
+				d3.select('.secLine-text').style('opacity','0');
+				d3.select('.secLine').style('opacity','0');
 			},
 			function() {
 				changeAnno(anno3);
 				rescaleX(173);
-				d3.select('#Kansas_City_Southern').attr('class','circles.highlight').attr('r','5');
+				d3.select('#Kansas_City_Southern')
+					.transition().delay(1500)
+					.attr('r','7')
+					.style({
+						'fill':'#9e2f50',
+						'fill-opacity':'1',
+						'stroke':'rgba(187, 109, 130, 0.5)',
+						'opacity':'1',
+						'stroke-width':'12px'
+					});
+				d3.select('.secLine-text')
+					.transition().delay(1500)
+					.style('opacity','1');
 			},
 			function() {
 				changeAnno(anno4);
-				d3.select('.secLine').style('opacity','0.3');
+				d3.select('.secLine').style('opacity','1');
 				resetYScale();
 				d3.selectAll('.circles').remove();
 				drawCircles();
+				d3.selectAll('circle').style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+				})
 				d3.select('.chart-subtitle').html('$m, 2014')
 			},
 			function() {
 				changeAnno(anno5);
-
+				moveDotsBackUp(0,10);
 			},
 			function() {
 				changeAnno(anno6);
+				moveDotsBackUp(10,50);
 			},
-			function() {changeAnno(anno7)},
+			function() {
+				changeAnno(anno7);
+				moveDotsBackUp(50,data.coords.length)
+				d3.select('#forwardButton').attr('disabled', null);
+			},
 			function() {changeAnno(anno8)},
 		]
 
@@ -331,6 +388,25 @@ console.log(viewportW)
 	            })
         }
 
+        //function to move dots back up to the panel at the top
+        function moveDotsBackUp(start,end) {
+
+			plot.selectAll('circle')
+				.filter(function (d,i){
+					return i >= start && i < end;
+				})
+		        .attr({
+		            'cx': function(d) { return dotxScale(d[4]) },
+		            'cy': function(d) { return (d[5]*10)-40 },
+		        })
+	            .style({
+					'stroke':'#333333',
+					'stroke-width':'0.5px',
+					'fill':'#333333',
+					'fill-opacity':'0.2'
+	            })
+        }
+
 	    //set up the scale we will use for plotting our scatter plot
 	    var xScale = d3.scale.linear()
 	        .domain(data.xDomain)
@@ -386,14 +462,12 @@ console.log(viewportW)
 
 console.log(viewportW < 800)
 
-
 		var svg = d3.select('.chart-holder').append('svg')
         .attr({
             'width': width,
             'height': height
         });
 
-console.log(svg)
 	    parent.append('span')
 	        .attr({
 	            'y':function(){
