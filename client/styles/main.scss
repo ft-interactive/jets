@@ -175,6 +175,14 @@ p {
   max-width: 620px;
   margin: 0.5em auto;
   //padding: 0 0px;
+
+  > a {
+
+    color: #27757b;
+    border-bottom: 1px dotted #27757b;
+    text-decoration: none;
+
+  }
 }
 
 .about-link {
