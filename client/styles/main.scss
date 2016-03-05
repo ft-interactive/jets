@@ -44,6 +44,10 @@ main {
   width: 1px;
 }
 
+.back-button{
+  display: none;
+}
+
 .share-links {  
   //margin-left: 10px;
       cursor: pointer;
@@ -80,6 +84,10 @@ main {
 
 }
 
+.o-buttons--small{
+    display: none;
+}
+
   h1 {
     color: oColorsGetPaletteColor('grey-tint5');
     font-family: $font-display;
@@ -103,7 +111,7 @@ hr {
     font-weight: 200;
     font-size: 1.35em;
     letter-spacing: 0.01em;
-    line-height: 1em;
+    line-height: 1.2em;
     max-width: 620px;
     margin: 1em auto 12px;
   }
@@ -574,17 +582,18 @@ article h3{
 .chart-xaxis-label-middle {
   font-size: 17px;
   font-weight: 600;
-  fill: oColorsGetPaletteColor('grey-tint4');
+  fill: oColorsGetPaletteColor('grey-tint3');
 }
 
 .chart-xaxis-label-left, .chart-xaxis-label-right {
   font-size: 17px;
   font-weight: 400;
-  fill: oColorsGetPaletteColor('grey-tint4');  
+  fill: oColorsGetPaletteColor('grey-tint3');  
 }
 
 .chart-xaxis-label-right-arrow, .chart-xaxis-label-left-arrow {
     font-size: 12px;
+    fill: oColorsGetPaletteColor('grey-tint3');  
 }
 
 section{
@@ -772,7 +781,27 @@ article{
 }
 
 .page-links{
-      font-size: 18px;
+      font-size: 20px;
+}
+
+.back-button{
+  display: block;
+  border-color: #fff1e0;
+  background:#fff1e0;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding-left:10px;
+  font-size: 25px;
+}
+
+.back-button:visited{
+   border-color: #fff1e0;
+    background:#fff1e0;
+}
+
+.masthead{
+  height:15px;
 }
 
 
