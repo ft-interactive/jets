@@ -44,6 +44,10 @@ main {
   width: 1px;
 }
 
+.back-button{
+  display: none;
+}
+
 .share-links {  
   //margin-left: 10px;
       cursor: pointer;
@@ -778,9 +782,27 @@ article{
       font-size: 19px;
 }
 
-.o-buttons--big{
-    display: inline-block;
-    float: left;
+.back-button{
+  display: block;
+}
+
+.o-buttons--big {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    padding-left:10px;
+    border-color: #fff1e0;
+    background:#fff1e0;
+}
+
+.o-buttons--big:visited {
+ 
+    border-color: #fff1e0;
+    background:#fff1e0;
+}
+
+.masthead{
+  height:15px;
 }
 
 
