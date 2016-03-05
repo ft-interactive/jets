@@ -76,20 +76,16 @@
     <main role="main">
       <h1>How the FT compiled a database on aircraft perquisites at the biggest US-listed companies</h1>
       <hr>
-      <h2>The Financial Times has published <a class="standfirst-link" href="/index.html">an article</a> opening a window onto the world of corporate jets perquisites... </h2>
+      <h2>The Financial Times has published <a class="standfirst-link" href="/index.html">an article</a> opening a window on to the world of corporate jets benefits, a practice that cost S&amp;P 500 companies nearly $40m in 2014</h2>
       <article>
       <h3>About the data</h3>
-      <p>To compile this database on executives’ personal use of company planes, the FT manually inspected nearly a thousand company filings to the Securities and Exchanges Commission. We looked at annual proxy filings (also known as DEF 14A filings) of S&P 500 companies across two financial years (FY2013 and FY2014).</p>
-
-      <p>Where a DEF 14A was not available (for example due to mergers and acquisitions activity), we looked for other proxy statements filed by the company that contained the information, such as PRE 14A statements.</p>
-
-      <p>To ease the process of finding all the filings, we used the SEC’s File Transfer Protocol (FTP) server for its EDGAR electronic filing system to get and compile an index of the filings we were looking for. </p>
-
-      <p>For our analysis, we included only the 465 companies that were in the S&P 500 from January 1, 2014 to December 2015 (the period during which the proxy statements we examined were filed). Since SEC regulations do not require companies to disclose the value of personal use of corporate aircraft by a named executive if it is less than $25,000, we discarded any voluntary disclosure of aircraft perquisites that were below that threshold.</p>
-
-      <p>This left us with 322 executives across 184 companies.</p>
-
-      <p>We entered the data into a Google spreadsheet, and then used R, the statistical programming language, to conduct our analysis.</p>
+      <p>To compile this database on executives’ personal use of company planes, the Financial Times manually inspected nearly a thousand company filings to the US Securities and Exchange Commission. We looked at annual proxy filings (also known as DEF 14A filings) of S&amp;P 500 companies across two financial years (2013 and 2014).</p>
+      <p>Where a DEF 14A filing was not available (for example because of mergers and acquisitions activity), we looked for other proxy statements filed by the company that contained the information, such as PRE 14A statements.</p>
+      <p>To ease the process of finding all the filings, we used the SEC’s file transfer protocol server for its Edgar electronic filing system to download an index of all the filings in the time period we were looking for. We then used R, the statistical programming language, to filter that index and compile a list of URLs for the filings we were interested in.
+      For our analysis, we included only the 465 companies that were in the S&amp;P 500 from January 1, 2014 to December 31, 2015 (the period during which the proxy statements we examined were filed). As SEC regulations do not require companies to disclose the value of personal use of corporate aircraft by a named executive if it is less than $25,000, we discarded any voluntary disclosure of aircraft benefits that were below that threshold.</p>
+      <p>That left us with 322 executives across 184 companies.</p>
+      <p>We entered the data into a Google spreadsheet and wrote a script using R to conduct our analysis. This identified the top spenders in 2013 and 2014, as well as the fact that the distribution of jet spending was skewed, with a handful of companies accounting for a large proportion of total spending. The script also compared spending in 2013 with 2014, looked at the data by industry, gender of the executive and geographic location of companies’ headquarters.</p>
+      <p>We delved deeper into the spending history of the top 10 companies by looking at their filings going back a decade to 2006. You can also read the companies’ responses to our findings at (insert link).</p>
       </article>
        <div class="link-container">
         <p class="factoid-link"><a class="page-links" href="/nine-facts.html">Nine facts about corporate jet perks</a></p>
@@ -100,8 +96,8 @@
         <h3>Footnotes</h3>
              <ul>
           <li>There is no data available for Mylan in 2014 because the company did not file a proxy statement with that information that year.</li>
-          <li>The amounts quoted for Humana and Duke Energy overstate the value of aircraft perquisites given to their executives when compared to other companies in our database. Both Humana and Duke Energy included, in their reported figure, the value of disallowed corporate income tax deductions. Other companies either explicitly excluded that amount, or did not make clear whether that cost was included. Humana and Duke Energy said they included that amount, but did not break out the value of it, so we were not able to exclude that from our calculations.</li>
-          <li>The amount quoted for CBS executives overstate the value of aircraft perquisites, since the figure reported by CBS is for "transportation-related benefits" and includes the cost for a personal car and driver. Other companies report car and airplane perquities separately.  
+          <li>The amounts quoted for Humana and Duke Energy overstate the value of spending on aircraft benefits when compared with other companies in our database. Both Humana and Duke Energy included the value of disallowed corporate income tax deductions in their reported figure. Other companies either explicitly excluded that amount, or did not make clear whether that cost was included. While Humana and Duke Energy said they included that amount, they did not break out the value of the disallowed deduction, so we were not able to exclude that from our calculations.</li>
+          <li>The amount quoted for CBS executives overstates the value of aircraft benefits, because the figure reported by CBS is for “transportation-related benefits” and includes the cost for a personal car and driver. Other companies report car and plane benefits separately.  
         </ul>
        
       </section>
@@ -110,7 +106,7 @@
         <h3>Download the data</h3>
         <div class="download-data-container">
         <img class="download-csv"src="assets/csv file icon.svg" alt="csv file icon">
-        <p class="download-text">Click here to download the full data set as a .csv file. It includes information on the value of personal use of corporate aircraft perquisites for each individual in 2013 and 2014, as well as links to the individual Securities and Exchanges Commission filings that are the source of that information.</p>
+        <p class="download-text">Click here to download the full data set as a .csv file. It includes information on the value of personal use of corporate aircraft benefits for each individual in 2013 and 2014, as well as links to the individual Securities and Exchange Commission filings that are the source of that information.</p>
        </div>
        <div class="github-link">
            <p class="story-link"><a class="page-links" href="https://github.com/ft-interactive/jets" target="_blank">Visit our Github page to download the source code for this story</a></p>
@@ -118,14 +114,14 @@
     
         </div>
       </section>
-
-      <section>
-      <h3>Explore the full data set</h3>
-       </section>
-      <div>
-        <iframe frameborder="0" height="9300" scrolling="no" src="http://www.ft.com/ig/widgets/sortable-table/v2/table.html#filter=1&id=1mXHAcZQjj9Hy3oKwaXwXrKUAv-5xH7zxQ6Sdjw-lnXo" width="100%"><!--.--></iframe>
+      <div class = 'sortable-table-holder'>
+        <section>
+        <h3>Explore the full data set</h3>
+         </section>
+        <div>
+          <iframe frameborder="0" height="9300" scrolling="no" src="http://www.ft.com/ig/widgets/sortable-table/v2/table.html#filter=1&id=1mXHAcZQjj9Hy3oKwaXwXrKUAv-5xH7zxQ6Sdjw-lnXo" width="100%"><!--.--></iframe>
+        </div>
       </div>
-
 
     </main>
 
