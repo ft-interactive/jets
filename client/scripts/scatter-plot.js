@@ -126,8 +126,9 @@ export default function(){
 					'fill':'#333333',
 					'fill-opacity':'0.2'
 					})
-
 				rescaleX(465);
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.selectAll('.o-buttons__group button').transition().duration(0).delay(1500).attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno5);
@@ -140,22 +141,29 @@ export default function(){
 		            'cx': function(d) { return dotxScale(d[4]) },
 		            'cy': function(d) { return (d[5]*10)-40 },
 		        });
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.selectAll('.o-buttons__group button').transition().duration(0).delay(1720).attr('disabled', null);
 		        d3.select('.chart-subtitle').html("% of total spending in 2014")
 
 			},
 			function(){
 				changeAnno(anno6);
 				drawCumulativeDots(0,10,75);
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.selectAll('.o-buttons__group button').transition().duration(0).delay(675).attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno7);
 				drawCumulativeDots(10,50,50);
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.selectAll('.o-buttons__group button').transition().duration(0).delay(1950).attr('disabled', null);
 			},
 
 			function(){
 				changeAnno(anno8);
 				drawCumulativeDots(50,data.coords.length,20)
-				d3.select('#forwardButton').attr('disabled','disabled');
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.select('#backButton').transition().duration(0).delay(1950).attr('disabled',null);
 			}
 		]
 
@@ -228,6 +236,8 @@ export default function(){
 				d3.select('.secLine-text')
 					.transition().delay(1500)
 					.style('opacity','1');
+				d3.selectAll('.o-buttons__group button').attr('disabled', 'disabled');
+				d3.selectAll('.o-buttons__group button').transition().duration(0).delay(1500).attr('disabled', null);
 			},
 			function() {
 				changeAnno(anno4);
@@ -374,6 +384,7 @@ console.log(viewportW)
 					return i >= start && i < end;
 				})
 		        .transition().delay(function(d, i) {
+		        	console.log(i*speed)
 				    return i * speed;
 			  	})
 	            .attr({
