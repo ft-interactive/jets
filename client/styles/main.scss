@@ -216,7 +216,8 @@ max-width: 620px;
   position: relative;
   overflow:hidden; 
   _overflow:visible; zoom:1;
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
   // height: 180px;
   background-color: white;
   display: inline-block;
@@ -240,7 +241,8 @@ max-width: 620px;
 .story-fact-card-right {
   overflow:hidden; 
   _overflow:visible; zoom:1;
-  width: 360px;
+  width: 100%;
+  max-width: 360px;
   background-color: white;
   display: inline-block;
   margin: 10px 20px 10px 10px;
@@ -373,6 +375,7 @@ img .commercial-plane{
   padding-right: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
+  clear:right;
 }
 
 .fact-words {
@@ -759,6 +762,7 @@ article{
 }
 
 @media (max-width: 800px) {
+
   .panel {
     float: right;
     background-color: oColorsGetPaletteColor('pink');
@@ -848,15 +852,36 @@ article{
   }
   .story-fact-card-holder {
     width: inherit;
+    display: block;
+    float: none;
   }
 }
 
 @media (max-width: 600px) {
+  h1, h6 {
+    text-align: left;
+  }
+
+  .social-icon-wrapper {
+    justify-content: flex-start;
+  }
+
   .story-fact-card-left, .story-fact-card-right {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     float: none;
     right: 0px;
+
+    > img {
+      display: block;
+      float: none;
+      margin: 20px auto 0px;
+    }
+  }
+
+  .story-fact-words {
+    width: initial;
+    padding-left: 15px;
   }
 
 }
