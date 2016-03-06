@@ -235,14 +235,13 @@ max-width: 620px;
   position:relative;
   display:inline-block;
   float:right;
-  width:50%;
+  width:40%;
 }
 
 .story-fact-card-right {
   overflow:hidden; 
   _overflow:visible; zoom:1;
-  width: 100%;
-  max-width: 360px;
+  width: 360px;
   background-color: white;
   display: inline-block;
   margin: 10px 20px 10px 10px;
@@ -852,8 +851,6 @@ article{
   }
   .story-fact-card-holder {
     width: inherit;
-    display: block;
-    float: none;
   }
 }
 
@@ -866,6 +863,10 @@ article{
     justify-content: flex-start;
   }
 
+  .story-fact-card-holder {
+    display: block;
+    float: none;
+  }
   .story-fact-card-left, .story-fact-card-right {
     display: block;
     margin: 0 auto 10px;
@@ -886,7 +887,17 @@ article{
 
 }
 
+@media (min-width: 800px) and (max-width: 900px) {
+  .story-fact-card-holder {
+    width: 50%;
+  }
+}
 
+@media (max-width: 360px) {
+  .story-fact-card-right{
+    width: 100%;
+  }
+}
 
 
 
