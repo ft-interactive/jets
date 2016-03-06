@@ -28,13 +28,13 @@ export default function(){
 
 // Annotation texts
 		let anno0 = 'We ranked each of the S&P 500 companies according to how much they spent giving free personal flights on the company plane to their executives'
-		let anno1 = 'This dot represents Freeport McRoran, the mining company that spent $1.2m, the most in 2014'
-		let anno2 = 'This dot is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for James Gorman, its chairman and chief executive'
-		let anno3 = 'Kansas City Southern\'s dot is just above the SEC\'s disclosure minimum. Companies do not have to report the value of perquisites worth less than $25,000 a year'
+		let anno1 = 'The large dot represents Freeport-McMoRan, the mining company that spent $1.2m, the most in 2014'
+		let anno2 = 'This is Morgan Stanley, and the $240,000 it paid for a single emergency round trip flight to Australia for James Gorman, its chairman and chief executive'
+		let anno3 = 'Kansas City Southern is just above the SEC\'s disclosure minimum. Companies do not have to report the value of perks worth less than $25,000 a year'
 		let anno4 = '173 companies disclosed jet perks in 2014. If you include all the 465 companies we looked at in the S&P 500, the chart would look like this instead'
 		let anno5 = 'S&P 500 companies spent $39.5m in total in 2014. But a handful were a lot more generous with free flights than the others'
-		let anno6 = 'The top 10 companies — or the top 2 per cent — accounted for a quarter of all spending in 2014. Many of these are companies where the founder or their family still exert control'
-		let anno7 = 'The top 50 companies — or the top 11 per cent — accounted for two-thirds of the total'
+		let anno6 = 'The top 10 companies, or the top 2 per cent, accounted for a quarter of all spending in 2014. Many of these are companies where the founder or their family still exert control'
+		let anno7 = 'The top 50 companies, or the top 11 per cent, accounted for two-thirds of the total'
 		let anno8 = 'Corporate governance experts say high personal jet spending is a sign of a weak board and too powerful executives, and could be a harbinger of other problems'
 
 		let annotations = [anno0, anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8];
