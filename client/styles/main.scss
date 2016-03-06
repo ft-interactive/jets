@@ -120,7 +120,7 @@ hr {
   h3 {
     color: oColorsGetPaletteColor('grey-tint5');
     margin: 0 auto;
-    max-width: 620px;
+/*    max-width: 620px;*/
     font-family: $font-sans;
     font-size: 18px;
     font-weight: 600;
@@ -745,7 +745,7 @@ article{
   height: 100%;
 }
 
-@include oGridRespondTo($from: S, $until: M) {
+@include oGridRespondTo(M) {
 
   .table__container {
     min-width: 620px;
