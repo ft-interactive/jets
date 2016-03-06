@@ -73,9 +73,9 @@ main {
     border-radius: 2px;
     background-size: $size $size;
 
-    &--twitter { background-image: url('/assets/twitter_icon.svg'); }
-    &--facebook { background-image: url('/assets/facebook_icon.svg'); }
-    &--linked-in { background-image: url('/assets/linkedin_icon.svg'); }
+    &--twitter { background-image: url('../assets/twitter_icon.svg'); }
+    &--facebook { background-image: url('../assets/facebook_icon.svg'); }
+    &--linked-in { background-image: url('../assets/linkedin_icon.svg'); }
 
     &:hover { background-color: oColorsGetPaletteColor('pink-tint2'); }
     &:active { background-color: oColorsGetPaletteColor('pink-tint3'); }
