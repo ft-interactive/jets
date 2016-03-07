@@ -2,7 +2,7 @@ import d3 from 'd3';
 import scatterPlot from './scatter-plot';
 import dataProcessor from './scatter-data-processor';
 
-const dataLocation = 'https://ig.ft.com/sites/business-jets/data/jetscatter.csv';
+const dataLocation = 'data/jetscatter.csv';
 
 function dataLoaded(error, data) {
 
