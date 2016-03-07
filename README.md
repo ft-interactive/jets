@@ -1,4 +1,4 @@
-# The corporate jet files
+# [The corporate jet files](https://ig.ft.com/sites/business-jets/)
 
 An FT investigation into executives’ personal use of company planes at the biggest US companies.
 
@@ -10,7 +10,7 @@ This is the repo for this article.
 
 ## Methodology and Data
 
-Please see our [methodology page](http://ig.ft.com/sites/business-jets)
+Please see our [methodology page](https://ig.ft.com/sites/business-jets/data.html)
 
 ## usage
 

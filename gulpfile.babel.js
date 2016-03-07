@@ -245,7 +245,7 @@ gulp.task('deploy', done => {
 		dest: DEPLOY_TARGET,
 	}, error => {
 		if (error) return done(error);
-		console.log(`Deployed to http://ig.ft.com/${DEPLOY_TARGET}/`);
+		console.log(`Deployed to https://ig.ft.com/${DEPLOY_TARGET}/`);
 	});
 });
 

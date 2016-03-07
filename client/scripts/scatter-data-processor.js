@@ -1,10 +1,8 @@
 // simple module
 export default function (data) {
 
-	let coords = [];
-
-	data.forEach(function (d) {
-	  coords.push([d.x, d.y, d.name.replace(/ /g,"_"), d.y1]);
+	let coords = data.map(function (d) {
+	  return [d.x, d.y, d.name.replace(/ /g,"_"), d.y1];
 	});
 
 	// setup x and y arrays to find range
