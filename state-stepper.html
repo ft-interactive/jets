@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+
+<button class="back">back</button>
+
+<button class="next active">next</button>
+
+<div class="viz">
+	Hi
+</div>
+
+<button class="back">back</button>
+
+<button class="next active">next</button>
+
+</body>
+<script type="text/javascript">
+	var state = [
+		{'text':'one','color':'#F00'},
+		{'text':'two','color':'#0F0'},
+		{'text':'three','color':'#00F'},
+	];
+
+
+	var myStepper = stepper(state);
+	myStepper.event.on('change', update);
+
+	d3.selectAll('.back').on('click',function(){
+		d3.event.preventDefault();
+		myStepper.back();
+	});
+
+	d3.selectAll('.next').on('click',function(){
+		d3.event.preventDefault();
+		myStepper.next();
+	});
+
+	update(state[0])
+
+//
+	function update(s){
+		d3.select('.viz')
+			.html(s.text)
+			.style({'color':s.color});
+
+
+		d3.selectAll('.back')
+			.classed('active', myStepper.backActive() )
+
+		d3.selectAll('.next')
+			.classed('active', myStepper.nextActive() )
+	}
+
+
+	function stepper(states){
+		var dispatch = d3.dispatch('change');
+		var currentState = 0;
+		var maxState = states.length-1;
+
+		function next(){
+			if(nextActive()){
+				currentState++;
+			}
+			dispatch.change(states[currentState])
+		}
+
+		function back(){
+			if(backActive()){
+				currentState--;
+			}
+			dispatch.change(states[currentState]);
+		}
+
+		function backActive(){
+			return (currentState > 0);
+		}
+
+		function nextActive(){
+			return (currentState<maxState);
+		}
+
+		return {
+			nextActive:nextActive,
+			backActive:backActive,
+			next:next,
+			back:back,
+			event:dispatch
+		}
+	}
+
+
+
+</script>
+</html>
