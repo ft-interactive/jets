@@ -29,8 +29,9 @@ function dataLoaded(error, data) {
 		    right:15
 		});
 
-	d3.select('#scatter')
-		.call(jetSpendingScatter);
+    	d3.select('#scatter')
+    		.call(jetSpendingScatter);
+    
 }
 
 d3.csv(dataLocation, dataLoaded);

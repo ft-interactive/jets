@@ -39,52 +39,72 @@ export default function(){
 
 		let annotations = [anno0, anno1, anno2, anno3, anno4, anno5, anno6, anno7, anno8];
 
+		let states = [
+			{
+				annotation:'We ranked each of the S&P 500 companies according to how much they spent giving free personal flights on the company plane to their executives',
+				highlight:['#Freeport-McMoRan','#Morgan_Stanley'],
+				hr:true,
+			},
+			{
+				annotation:'The large dot represents Freeport-McMoRan, the mining company that spent $1.2m, the most in 2014',
+				highlight:['#Freeport-McMoRan'],
+				hr:false,
+			}
+		];
+
 
 	//needed for animation
 		let storyState = 0;
 		let maxState = annotations.length;
 
 //Animations
+		var highlightState = {
+			'r':'7',
+			'class': 'selected-company'
+		};
+
+		var defaultState = {
+			'stroke':'#333333',
+			'stroke-width':'0.5px',
+			'fill':'#333333',
+			'fill-opacity':'0.2',
+			'r':'3.5'
+		};
+
+		var knockedBackState = {
+
+		}
+
+		function highlight(companies){
+			d3.selectAll('circle')
+				.attr(defaultState);
+		
+			d3.selectAll(highlightCompanies.join(','))
+				.attr(highlightState);
+		}
+
 		let animations = [
-			function(){
-				changeAnno(anno1);
-				d3.selectAll('circle').style({
-					'stroke':'#333333',
-					'stroke-width':'0.5px',
-					'fill':'#333333',
-					'fill-opacity':'0.2'
-				})
-				d3.select('#Freeport-McMoRan')
-					.attr('r','7')
-					.style({
-						'fill':'#9e2f50',
-						'fill-opacity':'1',
-						'stroke':'rgba(187, 109, 130, 0.5)',
-						'opacity':'1',
-						'stroke-width':'12px'
-					});
-
+			function(state){
+				changeAnno(annotation);
+				highlight( highlights );
 				d3.select('#backButton[disabled]').attr('disabled', null);
-
 			},
-			function(){
-				changeAnno(anno2);
-				d3.select('#Freeport-McMoRan').attr('r','3.5')
-				.style({
-					'stroke':'#333333',
-					'stroke-width':'0.5px',
-					'fill':'#333333',
-					'fill-opacity':'0.2'
-				});
-				d3.select('#Morgan_Stanley')
-					.attr('r','7')
-					.style({
-						'fill':'#9e2f50',
-						'fill-opacity':'1',
-						'stroke':'rgba(187, 109, 130, 0.5)',
-						'opacity':'1',
-						'stroke-width':'12px'
-					});
+			function(state){
+				changeAnno(state.annotation);
+				highlight( state.highlights );
+				if(state.hr){
+					d3.select('.secLine').style('opacity','1');
+					plot.append('text')
+						.text('MINIMUM FOR DISCLOSURE')
+						.attr({
+							'class':'secLine-text',
+							'x':'0',
+							'y':function(){ return yScale(0.025)},
+							'dx':'2px',
+							'dy':'-5px'
+						})
+				}
+				d3.select('#backButton[disabled]').attr('disabled', null);
 			},
 			function(){
 				changeAnno(anno3);
@@ -96,13 +116,9 @@ export default function(){
 					'fill-opacity':'0.2'
 				});
 				d3.select('#Kansas_City_Southern')
-					.attr('r','7')
-					.style({
-						'fill':'#9e2f50',
-						'fill-opacity':'1',
-						'stroke':'rgba(187, 109, 130, 0.5)',
-						'opacity':'1',
-						'stroke-width':'12px'
+					.attr({
+						'r':'7',
+						'class': 'selected-company'
 					});
 				d3.select('.secLine').style('opacity','1');
 				plot.append('text')
@@ -171,26 +187,19 @@ export default function(){
 			function() {},
 			function() {
 				changeAnno(anno0); 
-				d3.selectAll('circle').style({
-					'fill':'#9e2f50',
-					'fill-opacity':'0.5',
-					'stroke':'#9e2f50',
-					'stroke-width': '0.5px'
-				})
+				d3.selectAll('circle').classed('selected-company',false);
+
 				d3.select('#Freeport-McMoRan').attr('r','3.5')
 				d3.select('#backButton').attr('disabled', 'disabled');
 			},
 			function() {
 				changeAnno(anno1);
 				d3.select('#Freeport-McMoRan')
-					.attr('r','7')
-					.style({
-						'fill':'#9e2f50',
-						'fill-opacity':'1',
-						'stroke':'rgba(187, 109, 130, 0.5)',
-						'opacity':'1',
-						'stroke-width':'12px'
+					.attr({
+						'r':'7',
+						'class': 'selected-company'
 					});
+
 				d3.select('#Morgan_Stanley').attr('r','3.5')
 				.style({
 					'stroke':'#333333',
@@ -202,13 +211,9 @@ export default function(){
 			function() {
 				changeAnno(anno2)
 				d3.select('#Morgan_Stanley')
-					.attr('r','7')
-					.style({
-						'fill':'#9e2f50',
-						'fill-opacity':'1',
-						'stroke':'rgba(187, 109, 130, 0.5)',
-						'opacity':'1',
-						'stroke-width':'12px'
+					.attr({
+						'r':'7',
+						'class': 'selected-company'
 					});
 				d3.select('#Kansas_City_Southern').attr('r','3.5')
 				.style({
